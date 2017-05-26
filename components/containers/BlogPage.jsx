@@ -1,7 +1,34 @@
 const posts = [
-  { text: "Первый немного текста", link: "https://facebook.github.io/react/img/logo.svg" },
-  { text: "Второй немного текста", link: "https://facebook.github.io/react/img/logo.svg" },
-  { text: "Четвертый немного текста", link: "https://facebook.github.io/react/img/logo.svg" }
+  {
+    id: 1,
+    text: "Первый немного текста",
+    image: {
+      src: "https://facebook.github.io/react/img/logo.svg",
+      alt: "Alt 1",
+      width: "100px",
+      height: "100px"
+    }
+  },
+  {
+    id: 2,
+    text: "Второй немного текста",
+    image: {
+      src: "https://facebook.github.io/react/img/logo.svg",
+      alt: "Alt 2",
+      width: "100px",
+      height: "100px"
+    }
+  },
+  {
+    id: 4,
+    text: "Четвертый немного текста",
+    image: {
+      src: "https://facebook.github.io/react/img/logo.svg",
+      alt: "Alt 3",
+      width: "100px",
+      height: "100px"
+    }
+  }
 ];
 
 class BlogPage extends React.Component {
@@ -13,9 +40,11 @@ class BlogPage extends React.Component {
   }
 
   render() {
+    const { posts } = this.state;
+
     return (
       <div>
-        <BlogList posts={this.state.posts} />
+        <BlogList posts={posts} />
       </div>
     )
   }

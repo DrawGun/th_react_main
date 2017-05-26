@@ -1,19 +1,17 @@
 class BlogItem extends React.Component {
 
   render() {
-    const {
-      text,
-      link
-    } = this.props.post;
+    const { text, image } = this.props;
+    const { src, alt, width, height } = image;
 
     return (
       <div>
         <TextEl text={text} />
         <Image
-          src={link}
-          width="100px"
-          height="100px"
-          alt="Это картинка" />
+          src={src}
+          width={width}
+          height={height}
+          alt={alt} />
       </div>
     )
   }

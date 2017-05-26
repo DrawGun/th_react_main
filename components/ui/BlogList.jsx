@@ -14,10 +14,11 @@ class BlogList extends React.Component {
 
     return _.map(
       posts,
-      (post, key) => (
+      (post) => (
         <BlogItem
-          key={key}
-          post={post} />
+          key={post.id}
+          text={post.text}
+          image={post.image} />
       )
     )
   }
