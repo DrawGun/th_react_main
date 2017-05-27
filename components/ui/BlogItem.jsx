@@ -6,7 +6,9 @@ class BlogItem extends React.Component {
 
     return (
       <div>
-        <TextEl text={text} />
+        <TextBox>
+          {text}
+        </TextBox>
         <Image
           src={src}
           width={width}

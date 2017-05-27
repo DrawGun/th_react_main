@@ -49,4 +49,4 @@ class BlogPage extends React.Component {
     )
   }
 
-}
+};

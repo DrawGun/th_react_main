@@ -1,25 +1,20 @@
 class BlogList extends React.Component {
 
   render() {
-    const posts = this.getPosts();
-    return (
-      <div>
-        { posts }
-      </div>
-    )
-  }
-
-  getPosts() {
-    const { posts } = this.props
-
-    return _.map(
-      posts,
+    const posts = _.map(
+      this.props.posts,
       (post) => (
         <BlogItem
           key={post.id}
           text={post.text}
           image={post.image} />
       )
+    );
+
+    return (
+      <div>
+        { posts }
+      </div>
     )
   }
 
