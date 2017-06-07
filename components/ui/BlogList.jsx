@@ -7,7 +7,8 @@ class BlogList extends React.Component {
         <BlogItem
           key={post.id}
           text={post.text}
-          image={post.image} />
+          image={post.image}
+          meta={post.meta} />
       )
     );
 
@@ -18,4 +19,12 @@ class BlogList extends React.Component {
     )
   }
 
-}
+};
+
+BlogList.propTypes = {
+  posts: React.PropTypes.array
+};
+
+BlogList.defaultProps = {
+  posts: []
+};
