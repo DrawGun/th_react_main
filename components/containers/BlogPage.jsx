@@ -10,8 +10,8 @@ const posts = [
     },
     meta: {
       author: "Author 1",
-      created_at: moment().format("MM-DD-YYYY"),
-      updated_at: moment().format("MM-DD-YYYY"),
+      createdAt: moment().format("MM-DD-YYYY"),
+      updatedAt: moment().format("MM-DD-YYYY"),
       likes: 1
     }
   },
@@ -26,8 +26,8 @@ const posts = [
     },
     meta: {
       author: "Author 1",
-      created_at: moment().format("MM-DD-YYYY"),
-      updated_at: moment().format("MM-DD-YYYY"),
+      createdAt: moment().format("MM-DD-YYYY"),
+      updatedAt: moment().format("MM-DD-YYYY"),
       likes: 2
     }
   },
@@ -42,8 +42,8 @@ const posts = [
     },
     meta: {
       author: "Author 1",
-      created_at: moment().format("MM-DD-YYYY"),
-      updated_at: moment().format("MM-DD-YYYY"),
+      createdAt: moment().format("MM-DD-YYYY"),
+      updatedAt: moment().format("MM-DD-YYYY"),
       likes: 1
     }
   }

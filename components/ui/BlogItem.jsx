@@ -3,7 +3,7 @@ class BlogItem extends React.Component {
   render() {
     const { text, image, meta } = this.props;
     const { src, alt, width, height } = image;
-    const { author, created_at, updated_at, likes } = meta;
+    const { author, createdAt, updatedAt, likes } = meta;
 
     return (
       <div>
@@ -17,8 +17,8 @@ class BlogItem extends React.Component {
           alt={alt} />
         <PostMetaData
           author={author}
-          created_at={created_at}
-          updated_at={updated_at} />
+          createdAt={createdAt}
+          updatedAt={updatedAt} />
 
         <Like
           likes={likes} />
@@ -31,7 +31,7 @@ class BlogItem extends React.Component {
 
 BlogItem.propTypes = {
   text: React.PropTypes.string,
-  image: React.PropTypes.object,
+  image: React.PropTypes.shape(Image.propTypes),
   meta: React.PropTypes.object
 };
 
