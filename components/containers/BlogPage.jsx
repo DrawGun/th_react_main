@@ -7,6 +7,12 @@ const posts = [
       alt: "Alt 1",
       width: "100px",
       height: "100px"
+    },
+    meta: {
+      author: "Author 1",
+      createdAt: moment().format("MM-DD-YYYY"),
+      updatedAt: moment().format("MM-DD-YYYY"),
+      likes: 1
     }
   },
   {
@@ -17,6 +23,12 @@ const posts = [
       alt: "Alt 2",
       width: "100px",
       height: "100px"
+    },
+    meta: {
+      author: "Author 1",
+      createdAt: moment().format("MM-DD-YYYY"),
+      updatedAt: moment().format("MM-DD-YYYY"),
+      likes: 2
     }
   },
   {
@@ -27,6 +39,12 @@ const posts = [
       alt: "Alt 3",
       width: "100px",
       height: "100px"
+    },
+    meta: {
+      author: "Author 1",
+      createdAt: moment().format("MM-DD-YYYY"),
+      updatedAt: moment().format("MM-DD-YYYY"),
+      likes: 1
     }
   }
 ];

@@ -3,3 +3,7 @@ const TextBox = (props) => (
     { props.children }
   </span>
 );
+
+TextBox.propTypes = {
+  children: React.PropTypes.element.isRequired
+};
