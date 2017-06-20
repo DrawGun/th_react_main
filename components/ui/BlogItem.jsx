@@ -1,7 +1,12 @@
 class BlogItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this._incrementLikes = this.props.incrementLikes.bind(this);
+  }
 
   render() {
-    const { text, image, meta } = this.props;
+    const { id, text, image, meta } = this.props;
     const { src, alt, width, height } = image;
     const { author, createdAt, updatedAt, likes } = meta;
 
@@ -21,7 +26,9 @@ class BlogItem extends React.Component {
           updatedAt={updatedAt} />
 
         <Like
-          likes={likes} />
+          id={id}
+          likes={likes}
+          incrementLikes={this._incrementLikes} />
 
       </div>
     )
@@ -32,7 +39,8 @@ class BlogItem extends React.Component {
 BlogItem.propTypes = {
   text: React.PropTypes.string,
   image: React.PropTypes.shape(Image.propTypes),
-  meta: React.PropTypes.object
+  meta: React.PropTypes.object,
+  incrementLikes: React.PropTypes.func
 };
 
 BlogItem.defaultProps = {

@@ -25,7 +25,7 @@ const posts = [
       height: "100px"
     },
     meta: {
-      author: "Author 1",
+      author: "Author 2",
       createdAt: moment().format("MM-DD-YYYY"),
       updatedAt: moment().format("MM-DD-YYYY"),
       likes: 2
@@ -41,7 +41,7 @@ const posts = [
       height: "100px"
     },
     meta: {
-      author: "Author 1",
+      author: "Author 3",
       createdAt: moment().format("MM-DD-YYYY"),
       updatedAt: moment().format("MM-DD-YYYY"),
       likes: 1
@@ -54,17 +54,25 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { posts }
+    this.state = { posts };
+    this._incrementLikes = this._incrementLikes.bind(this);
   }
 
   render() {
     const { posts } = this.state;
-
     return (
       <div>
-        <BlogList posts={posts} />
+        <BlogList posts={posts} incrementLikes={this._incrementLikes} />
       </div>
     )
+  }
+
+  _incrementLikes(postId) {
+    const { posts } = this.state;
+    let post = _.find(posts, function(p) { return p.id == postId; });
+    post.meta.likes++;
+
+    this.setState({posts: posts});
   }
 
 };
