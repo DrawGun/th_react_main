@@ -12,7 +12,7 @@ class BlogList extends React.Component {
         <BlogItem
           key={post.id}
           id={post.id}
-          text={post.text}
+          title={post.title}
           image={post.image}
           meta={post.meta}
           incrementLikes={this._incrementLikes} />

@@ -6,14 +6,14 @@ class BlogItem extends React.Component {
   }
 
   render() {
-    const { id, text, image, meta } = this.props;
+    const { id, title, image, meta } = this.props;
     const { src, alt, width, height } = image;
     const { author, createdAt, updatedAt, likes } = meta;
 
     return (
       <div>
         <TextBox>
-          {text}
+          {title}
         </TextBox>
         <Image
           src={src}
@@ -37,14 +37,14 @@ class BlogItem extends React.Component {
 };
 
 BlogItem.propTypes = {
-  text: React.PropTypes.string,
+  title: React.PropTypes.string,
   image: React.PropTypes.shape(Image.propTypes),
   meta: React.PropTypes.object,
   incrementLikes: React.PropTypes.func
 };
 
 BlogItem.defaultProps = {
-  text: "Some text",
+  title: "Some title",
   image: {},
   meta: {}
 };

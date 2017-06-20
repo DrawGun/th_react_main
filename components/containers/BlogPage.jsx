@@ -1,7 +1,7 @@
 const posts = [
   {
     id: 1,
-    text: "Первый немного текста",
+    title: "Первый немного текста",
     image: {
       src: "https://facebook.github.io/react/img/logo.svg",
       alt: "Alt 1",
@@ -17,7 +17,7 @@ const posts = [
   },
   {
     id: 2,
-    text: "Второй немного текста",
+    title: "Второй немного текста",
     image: {
       src: "https://facebook.github.io/react/img/logo.svg",
       alt: "Alt 2",
@@ -33,7 +33,7 @@ const posts = [
   },
   {
     id: 4,
-    text: "Четвертый немного текста",
+    title: "Четвертый немного текста",
     image: {
       src: "https://facebook.github.io/react/img/logo.svg",
       alt: "Alt 3",
@@ -60,9 +60,11 @@ class BlogPage extends React.Component {
 
   render() {
     const { posts } = this.state;
+    const columns = this.pieChartColumns();
     return (
       <div>
         <BlogList posts={posts} incrementLikes={this._incrementLikes} />
+        <PieChart columns={columns} />
       </div>
     )
   }
@@ -73,6 +75,13 @@ class BlogPage extends React.Component {
     post.meta.likes++;
 
     this.setState({posts: posts});
+  }
+
+  pieChartColumns() {
+    const { posts } = this.state;
+    return _.map(posts, function(post) {
+      [post.title, post.meta.likes]
+    });
   }
 
 };
