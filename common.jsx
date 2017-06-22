@@ -96,18 +96,21 @@ class BlogPage extends React.Component {
 
   _incrementLikes(postId) {
     const { posts } = this.state;
-    let post = _.find(posts, function(p) { return p.id == postId; });
-    post.meta.likes++;
+    const updatedPosts = _.map(
+      posts,
+      (post, key) => ((post.id === postId) ? {...post, likes: ++post.meta.likes} : post)
+    )
 
-    this.setState({posts: posts});
+    this.setState({posts: updatedPosts});
   }
 
   pieChartColumns() {
     const { posts } = this.state;
 
-    return _.map(posts, function(post) {
-      return [post.title, post.meta.likes];
-    });
+    return _.map(
+      posts,
+      (post) => ([post.title, post.meta.likes])
+    );
   }
 
 };
