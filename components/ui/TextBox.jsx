@@ -5,5 +5,5 @@ const TextBox = (props) => (
 );
 
 TextBox.propTypes = {
-  children: React.PropTypes.element.isRequired
+  children: React.PropTypes.node
 };
