@@ -1,3 +1,5 @@
+import React from "react";
+
 class Like extends React.Component {
   constructor(props) {
     super(props);
@@ -32,3 +34,5 @@ Like.propTypes = {
 Like.defaultProps = {
   likes: 0
 };
+
+export default Like;

@@ -1,3 +1,7 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import c3 from 'c3';
+
 class PieChart extends React.Component {
 
   componentDidMount() {
@@ -30,3 +34,6 @@ PieChart.propTypes = {
 PieChart.defaultProps = {
   columns: []
 };
+
+
+export default PieChart;

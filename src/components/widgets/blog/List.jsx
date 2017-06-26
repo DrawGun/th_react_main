@@ -1,4 +1,10 @@
-class BlogList extends React.Component {
+import React from "react";
+
+import { map } from "lodash/collection";
+
+import BlogItem from "./Item"
+
+class List extends React.Component {
   constructor(props) {
     super(props);
 
@@ -6,7 +12,7 @@ class BlogList extends React.Component {
   }
 
   render() {
-    const posts = _.map(
+    const posts = map(
       this.props.posts,
       (post) => (
         <BlogItem
@@ -28,11 +34,13 @@ class BlogList extends React.Component {
 
 };
 
-BlogList.propTypes = {
+List.propTypes = {
   posts: React.PropTypes.array,
   incrementLikes: React.PropTypes.func
 };
 
-BlogList.defaultProps = {
+List.defaultProps = {
   posts: []
 };
+
+export default List;

@@ -1,3 +1,5 @@
+import React from "react";
+
 class Image extends React.Component {
 
   render() {
@@ -34,3 +36,5 @@ Image.defaultProps = {
   height: "100px",
   alt: "Alt"
 };
+
+export default Image;

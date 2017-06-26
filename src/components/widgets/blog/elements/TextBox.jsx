@@ -1,3 +1,5 @@
+import React from "react";
+
 const TextBox = (props) => (
   <span>
     { props.children }
@@ -7,3 +9,5 @@ const TextBox = (props) => (
 TextBox.propTypes = {
   children: React.PropTypes.node
 };
+
+export default TextBox;

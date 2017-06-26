@@ -1,0 +1,40 @@
+{
+  "name": "th_react_main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrawGun/th_react_main.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrawGun/th_react_main/issues"
+  },
+  "homepage": "https://github.com/DrawGun/th_react_main#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.1.0",
+    "eslint-plugin-destructuring": "^2.1.0",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-react": "^7.1.0",
+    "webpack": "^3.0.0"
+  },
+  "dependencies": {
+    "c3": "^0.4.14",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}

@@ -1,3 +1,10 @@
+import React from "react";
+
+import TextBox from "./elements/TextBox";
+import Image from "./elements/Image";
+import MetaData from "./elements/MetaData";
+import Like from "./elements/Like";
+
 class BlogItem extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +27,7 @@ class BlogItem extends React.Component {
           width={width}
           height={height}
           alt={alt} />
-        <PostMetaData
+        <MetaData
           author={author}
           createdAt={createdAt}
           updatedAt={updatedAt} />
@@ -48,3 +55,5 @@ BlogItem.defaultProps = {
   image: {},
   meta: {}
 };
+
+export default BlogItem;

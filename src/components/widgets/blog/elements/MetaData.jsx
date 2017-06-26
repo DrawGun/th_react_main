@@ -1,4 +1,7 @@
-const PostMetaData = ({ author, createdAt, updatedAt }) => <div className="post-meta-data">
+import React from "react";
+import moment from "moment";
+
+const MetaData = ({ author, createdAt, updatedAt }) => <div className="post-meta-data">
   <ul>
     <li>Автор поста: { author }</li>
     <li>Дата создания: { createdAt }</li>
@@ -7,14 +10,16 @@ const PostMetaData = ({ author, createdAt, updatedAt }) => <div className="post-
 </div>
 
 
-PostMetaData.propTypes = {
+MetaData.propTypes = {
   author: React.PropTypes.string,
   createdAt: React.PropTypes.string,
   updatedAt: React.PropTypes.string
 };
 
-PostMetaData.defaultProps = {
+MetaData.defaultProps = {
   author: "Author",
   createdAt: moment().format("MM-DD-YYYY"),
   updatedAt: moment().format("MM-DD-YYYY")
 };
+
+export default MetaData;
