@@ -67,9 +67,10 @@ module.exports = {
     "template-curly-spacing": 1,
     "no-tabs": 2,
     "no-console": 0,
+    "import/no-unresolved": 0,
     // React
     "react/prefer-es6-class": 1,
-    "react/prefer-stateless-function": 1,
+    "react/prefer-stateless-function": 0,
     "react/prop-types": 1,
     "react/jsx-uses-vars": 2,
     "react/jsx-uses-react": 2
