@@ -36,7 +36,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['*', '.js', '.jsx'],
     modules: [
       path.join(process.cwd(), "src"),
       "node_modules"

@@ -1,13 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { map } from "lodash/collection";
+import { map } from 'lodash/collection';
 
-import BlogItem from "./Item"
+import BlogItem from './Item';
 
 class List extends React.Component {
   constructor(props) {
     super(props);
-
     this._incrementLikes = this.props.incrementLikes.bind(this);
   }
 
@@ -29,10 +28,9 @@ class List extends React.Component {
       <div>
         { posts }
       </div>
-    )
+    );
   }
-
-};
+}
 
 List.propTypes = {
   posts: React.PropTypes.array,

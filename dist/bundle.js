@@ -27733,7 +27733,7 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var rootEl = document.getElementById("app");
+var rootEl = document.getElementById('app');
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), rootEl);
 
@@ -40495,47 +40495,47 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var posts = exports.posts = [{
   id: 1,
-  title: "Первый немного текста",
+  title: 'Первый немного текста',
   image: {
-    src: "https://facebook.github.io/react/img/logo.svg",
-    alt: "Alt 1",
-    width: "100px",
-    height: "100px"
+    src: 'https://facebook.github.io/react/img/logo.svg',
+    alt: 'Alt 1',
+    width: '100px',
+    height: '100px'
   },
   meta: {
-    author: "Author 1",
-    createdAt: (0, _moment2.default)().format("MM-DD-YYYY"),
-    updatedAt: (0, _moment2.default)().format("MM-DD-YYYY"),
+    author: 'Author 1',
+    createdAt: (0, _moment2.default)().format('MM-DD-YYYY'),
+    updatedAt: (0, _moment2.default)().format('MM-DD-YYYY'),
     likes: 1
   }
 }, {
   id: 2,
-  title: "Второй немного текста",
+  title: 'Второй немного текста',
   image: {
-    src: "https://facebook.github.io/react/img/logo.svg",
-    alt: "Alt 2",
-    width: "100px",
-    height: "100px"
+    src: 'https://facebook.github.io/react/img/logo.svg',
+    alt: 'Alt 2',
+    width: '100px',
+    height: '100px'
   },
   meta: {
-    author: "Author 2",
-    createdAt: (0, _moment2.default)().format("MM-DD-YYYY"),
-    updatedAt: (0, _moment2.default)().format("MM-DD-YYYY"),
+    author: 'Author 2',
+    createdAt: (0, _moment2.default)().format('MM-DD-YYYY'),
+    updatedAt: (0, _moment2.default)().format('MM-DD-YYYY'),
     likes: 2
   }
 }, {
   id: 4,
-  title: "Четвертый немного текста",
+  title: 'Четвертый немного текста',
   image: {
-    src: "https://facebook.github.io/react/img/logo.svg",
-    alt: "Alt 3",
-    width: "100px",
-    height: "100px"
+    src: 'https://facebook.github.io/react/img/logo.svg',
+    alt: 'Alt 3',
+    width: '100px',
+    height: '100px'
   },
   meta: {
-    author: "Author 3",
-    createdAt: (0, _moment2.default)().format("MM-DD-YYYY"),
-    updatedAt: (0, _moment2.default)().format("MM-DD-YYYY"),
+    author: 'Author 3',
+    createdAt: (0, _moment2.default)().format('MM-DD-YYYY'),
+    updatedAt: (0, _moment2.default)().format('MM-DD-YYYY'),
     likes: 1
   }
 }];
@@ -45608,7 +45608,7 @@ var List = function (_React$Component) {
   }
 
   _createClass(List, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       var _this2 = this;
 
@@ -45623,7 +45623,7 @@ var List = function (_React$Component) {
       });
 
       return _react2.default.createElement(
-        "div",
+        'div',
         null,
         posts
       );
@@ -45632,8 +45632,6 @@ var List = function (_React$Component) {
 
   return List;
 }(_react2.default.Component);
-
-;
 
 List.propTypes = {
   posts: _react2.default.PropTypes.array,
@@ -45700,7 +45698,7 @@ var BlogItem = function (_React$Component) {
   }
 
   _createClass(BlogItem, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       var _props = this.props,
           id = _props.id,
@@ -45718,7 +45716,7 @@ var BlogItem = function (_React$Component) {
 
 
       return _react2.default.createElement(
-        "div",
+        'div',
         null,
         _react2.default.createElement(
           _TextBox2.default,
@@ -45745,9 +45743,8 @@ var BlogItem = function (_React$Component) {
   return BlogItem;
 }(_react2.default.Component);
 
-;
-
 BlogItem.propTypes = {
+  id: _react2.default.PropTypes.number,
   title: _react2.default.PropTypes.string,
   image: _react2.default.PropTypes.shape(_Image2.default.propTypes),
   meta: _react2.default.PropTypes.object,
@@ -45755,7 +45752,7 @@ BlogItem.propTypes = {
 };
 
 BlogItem.defaultProps = {
-  title: "Some title",
+  title: 'Some title',
   image: {},
   meta: {}
 };
@@ -45781,7 +45778,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var TextBox = function TextBox(props) {
   return _react2.default.createElement(
-    "span",
+    'span',
     null,
     props.children
   );
@@ -45828,7 +45825,7 @@ var Image = function (_React$Component) {
   }
 
   _createClass(Image, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       var _props = this.props,
           src = _props.src,
@@ -45838,9 +45835,9 @@ var Image = function (_React$Component) {
 
 
       return _react2.default.createElement(
-        "div",
+        'div',
         null,
-        _react2.default.createElement("img", {
+        _react2.default.createElement('img', {
           src: src,
           width: width,
           height: height,
@@ -45860,10 +45857,10 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  src: "https://facebook.github.io/react/img/logo.svg",
-  width: "100px",
-  height: "100px",
-  alt: "Alt"
+  src: 'https://facebook.github.io/react/img/logo.svg',
+  width: '100px',
+  height: '100px',
+  alt: 'Alt'
 };
 
 exports.default = Image;
@@ -45894,27 +45891,27 @@ var MetaData = function MetaData(_ref) {
       createdAt = _ref.createdAt,
       updatedAt = _ref.updatedAt;
   return _react2.default.createElement(
-    "div",
-    { className: "post-meta-data" },
+    'div',
+    { className: 'post-meta-data' },
     _react2.default.createElement(
-      "ul",
+      'ul',
       null,
       _react2.default.createElement(
-        "li",
+        'li',
         null,
-        "\u0410\u0432\u0442\u043E\u0440 \u043F\u043E\u0441\u0442\u0430: ",
+        '\u0410\u0432\u0442\u043E\u0440 \u043F\u043E\u0441\u0442\u0430: ',
         author
       ),
       _react2.default.createElement(
-        "li",
+        'li',
         null,
-        "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F: ",
+        '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F: ',
         createdAt
       ),
       _react2.default.createElement(
-        "li",
+        'li',
         null,
-        "\u0414\u0430\u0442\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F: ",
+        '\u0414\u0430\u0442\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F: ',
         updatedAt
       )
     )
@@ -45928,9 +45925,9 @@ MetaData.propTypes = {
 };
 
 MetaData.defaultProps = {
-  author: "Author",
-  createdAt: (0, _moment2.default)().format("MM-DD-YYYY"),
-  updatedAt: (0, _moment2.default)().format("MM-DD-YYYY")
+  author: 'Author',
+  createdAt: (0, _moment2.default)().format('MM-DD-YYYY'),
+  updatedAt: (0, _moment2.default)().format('MM-DD-YYYY')
 };
 
 exports.default = MetaData;
@@ -45973,23 +45970,23 @@ var Like = function (_React$Component) {
   }
 
   _createClass(Like, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       var likes = this.props.likes;
 
 
       return _react2.default.createElement(
-        "div",
+        'div',
         null,
         _react2.default.createElement(
-          "button",
+          'button',
           { onClick: this._incrementLikes },
           likes
         )
       );
     }
   }, {
-    key: "_incrementLikes",
+    key: '_incrementLikes',
     value: function _incrementLikes() {
       var id = this.props.id;
 
@@ -46054,7 +46051,7 @@ var PieChart = function (_React$Component) {
   }
 
   _createClass(PieChart, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       this.pieChart = _c2.default.generate({
         bindto: _reactDom2.default.findDOMNode(this.refs.pieChart),
@@ -46062,19 +46059,19 @@ var PieChart = function (_React$Component) {
       });
     }
   }, {
-    key: "componentWillUnmount",
+    key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       this.pieChart.destroy();
     }
   }, {
-    key: "componentWillReceiveProps",
+    key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       this.pieChart.load({ columns: nextProps.columns });
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
-      return _react2.default.createElement("div", { ref: "pieChart" });
+      return _react2.default.createElement('div', { ref: 'pieChart' });
     }
   }]);
 

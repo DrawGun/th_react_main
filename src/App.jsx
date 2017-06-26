@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import BlogPage from "components/BlogPage";
+import BlogPage from 'components/BlogPage';
 
 const App = () => (
   <BlogPage />

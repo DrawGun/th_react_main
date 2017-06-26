@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import TextBox from "./elements/TextBox";
-import Image from "./elements/Image";
-import MetaData from "./elements/MetaData";
-import Like from "./elements/Like";
+import TextBox from './elements/TextBox';
+import Image from './elements/Image';
+import MetaData from './elements/MetaData';
+import Like from './elements/Like';
 
 class BlogItem extends React.Component {
   constructor(props) {
@@ -38,12 +38,12 @@ class BlogItem extends React.Component {
           incrementLikes={this._incrementLikes} />
 
       </div>
-    )
+    );
   }
-
-};
+}
 
 BlogItem.propTypes = {
+  id: React.PropTypes.number,
   title: React.PropTypes.string,
   image: React.PropTypes.shape(Image.propTypes),
   meta: React.PropTypes.object,
@@ -51,7 +51,7 @@ BlogItem.propTypes = {
 };
 
 BlogItem.defaultProps = {
-  title: "Some title",
+  title: 'Some title',
   image: {},
   meta: {}
 };

@@ -28,7 +28,8 @@
     "eslint-plugin-destructuring": "^2.1.0",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-react": "^7.1.0",
-    "webpack": "^3.0.0"
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
     "c3": "^0.4.14",

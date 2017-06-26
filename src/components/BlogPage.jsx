@@ -31,7 +31,7 @@ class BlogPage extends React.Component {
     const { posts } = this.state;
     const updatedPosts = map(
       posts,
-      (post, key) => ((post.id === postId) ? {...post, meta: { ...post.meta, likes: post.meta.likes + 1 }} : post)
+      (post, key) => ((post.id === postId) ? { ...post, meta: { ...post.meta, likes: post.meta.likes + 1 }} : post)
     )
 
     this.setState({posts: updatedPosts});

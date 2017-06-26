@@ -1,7 +1,6 @@
-import React from "react";
+import React from 'react';
 
 class Image extends React.Component {
-
   render() {
     const {
       src,
@@ -18,9 +17,8 @@ class Image extends React.Component {
           height={height}
           alt={alt} />
       </div>
-    )
+    );
   }
-
 }
 
 Image.propTypes = {
@@ -31,10 +29,10 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  src: "https://facebook.github.io/react/img/logo.svg",
-  width: "100px",
-  height: "100px",
-  alt: "Alt"
+  src: 'https://facebook.github.io/react/img/logo.svg',
+  width: '100px',
+  height: '100px',
+  alt: 'Alt'
 };
 
 export default Image;
