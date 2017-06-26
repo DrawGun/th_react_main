@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Like extends React.Component {
   constructor(props) {
@@ -16,19 +17,19 @@ class Like extends React.Component {
           { likes }
         </button>
       </div>
-    )
+    );
   }
 
   _incrementLikes() {
     const { id } = this.props;
     this.props.incrementLikes(id);
   }
-
 }
 
 Like.propTypes = {
-  likes: React.PropTypes.number,
-  incrementLikes: React.PropTypes.func
+  id: PropTypes.number,
+  likes: PropTypes.number,
+  incrementLikes: PropTypes.func
 };
 
 Like.defaultProps = {

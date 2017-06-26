@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { Button } from 'react-bootstrap';
 
 import TextBox from './elements/TextBox';
 import Image from './elements/Image';
@@ -43,11 +46,11 @@ class BlogItem extends React.Component {
 }
 
 BlogItem.propTypes = {
-  id: React.PropTypes.number,
-  title: React.PropTypes.string,
-  image: React.PropTypes.shape(Image.propTypes),
-  meta: React.PropTypes.object,
-  incrementLikes: React.PropTypes.func
+  id: PropTypes.number,
+  title: PropTypes.string,
+  image: PropTypes.shape(Image.propTypes),
+  meta: PropTypes.object,
+  incrementLikes: PropTypes.func
 };
 
 BlogItem.defaultProps = {

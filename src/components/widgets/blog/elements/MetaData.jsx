@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const MetaData = ({ author, createdAt, updatedAt }) =>
@@ -12,9 +13,9 @@ const MetaData = ({ author, createdAt, updatedAt }) =>
 
 
 MetaData.propTypes = {
-  author: React.PropTypes.string,
-  createdAt: React.PropTypes.string,
-  updatedAt: React.PropTypes.string
+  author: PropTypes.string,
+  createdAt: PropTypes.string,
+  updatedAt: PropTypes.string
 };
 
 MetaData.defaultProps = {

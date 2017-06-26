@@ -1,14 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import { posts } from "constants/static/posts";
+import { posts } from 'constants/static/posts';
 
-import { map } from "lodash/collection";
+import { map } from 'lodash/collection';
 
-import BlogList from "components/widgets/blog/List";
-import PieChart from "components/widgets/blog/PieChart";
+import BlogList from 'components/widgets/blog/List';
+import PieChart from 'components/widgets/blog/PieChart';
 
 class BlogPage extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -24,15 +23,17 @@ class BlogPage extends React.Component {
         <BlogList posts={posts} incrementLikes={this._incrementLikes} />
         <PieChart columns={columns} />
       </div>
-    )
+    );
   }
 
   _incrementLikes(postId) {
     const { posts } = this.state;
     const updatedPosts = map(
       posts,
-      (post, key) => ((post.id === postId) ? { ...post, meta: { ...post.meta, likes: post.meta.likes + 1 }} : post)
-    )
+      (post) => (
+        (post.id === postId) ?
+          { ...post, meta: { ...post.meta, likes: post.meta.likes + 1 }} : post)
+    );
 
     this.setState({posts: updatedPosts});
   }
@@ -45,7 +46,6 @@ class BlogPage extends React.Component {
       (post) => ([post.title, post.meta.likes])
     );
   }
-
-};
+}
 
 export default BlogPage;

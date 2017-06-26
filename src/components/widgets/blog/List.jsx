@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { map } from 'lodash/collection';
 
@@ -33,8 +34,8 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  posts: React.PropTypes.array,
-  incrementLikes: React.PropTypes.func
+  posts: PropTypes.array,
+  incrementLikes: PropTypes.func
 };
 
 List.defaultProps = {
