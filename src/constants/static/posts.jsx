@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { DEFAULT_DATE_FORMAT } from 'constants/Date';
 
 export const posts = [
   {
@@ -12,8 +13,8 @@ export const posts = [
     },
     meta: {
       author: 'Author 1',
-      createdAt: moment().format('MM-DD-YYYY'),
-      updatedAt: moment().format('MM-DD-YYYY'),
+      createdAt: moment().format(DEFAULT_DATE_FORMAT),
+      updatedAt: moment().format(DEFAULT_DATE_FORMAT),
       likes: 1
     }
   },
@@ -28,8 +29,8 @@ export const posts = [
     },
     meta: {
       author: 'Author 2',
-      createdAt: moment().format('MM-DD-YYYY'),
-      updatedAt: moment().format('MM-DD-YYYY'),
+      createdAt: moment().format(DEFAULT_DATE_FORMAT),
+      updatedAt: moment().format(DEFAULT_DATE_FORMAT),
       likes: 2
     }
   },
@@ -44,8 +45,8 @@ export const posts = [
     },
     meta: {
       author: 'Author 3',
-      createdAt: moment().format('MM-DD-YYYY'),
-      updatedAt: moment().format('MM-DD-YYYY'),
+      createdAt: moment().format(DEFAULT_DATE_FORMAT),
+      updatedAt: moment().format(DEFAULT_DATE_FORMAT),
       likes: 1
     }
   }

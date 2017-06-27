@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+import { DEFAULT_DATE_FORMAT } from 'constants/Date';
+
 const MetaData = ({ author, createdAt, updatedAt }) =>
   <div className='post-meta-data'>
     <ul>
@@ -20,8 +22,8 @@ MetaData.propTypes = {
 
 MetaData.defaultProps = {
   author: 'Author',
-  createdAt: moment().format('MM-DD-YYYY'),
-  updatedAt: moment().format('MM-DD-YYYY')
+  createdAt: moment().format(DEFAULT_DATE_FORMAT),
+  updatedAt: moment().format(DEFAULT_DATE_FORMAT)
 };
 
 export default MetaData;

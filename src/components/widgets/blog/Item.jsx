@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from 'react-bootstrap';
+import { Panel, Media } from 'react-bootstrap';
 
 import TextBox from './elements/TextBox';
 import Image from './elements/Image';
@@ -19,28 +19,39 @@ class BlogItem extends React.Component {
     const { id, title, image, meta } = this.props;
     const { src, alt, width, height } = image;
     const { author, createdAt, updatedAt, likes } = meta;
+    const postTitle = this.postTitle(title);
 
     return (
-      <div>
-        <TextBox>
-          {title}
-        </TextBox>
-        <Image
-          src={src}
-          width={width}
-          height={height}
-          alt={alt} />
-        <MetaData
-          author={author}
-          createdAt={createdAt}
-          updatedAt={updatedAt} />
+      <Panel header={postTitle}>
+        <Media>
+          <Media.Left align="top">
+            <Image
+              src={src}
+              width={width}
+              height={height}
+              alt={alt} />
+          </Media.Left>
+          <Media.Body>
+            <MetaData
+              author={author}
+              createdAt={createdAt}
+              updatedAt={updatedAt} />
 
-        <Like
-          id={id}
-          likes={likes}
-          incrementLikes={this._incrementLikes} />
+            <Like
+              id={id}
+              likes={likes}
+              incrementLikes={this._incrementLikes} />
+          </Media.Body>
+        </Media>
+      </Panel>
+    );
+  }
 
-      </div>
+  postTitle(title) {
+    return (
+      <TextBox>
+        {title}
+      </TextBox>
     );
   }
 }

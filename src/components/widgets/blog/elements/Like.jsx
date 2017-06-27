@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { ButtonToolbar, Button, Glyphicon } from 'react-bootstrap';
+
 class Like extends React.Component {
   constructor(props) {
     super(props);
@@ -12,11 +14,11 @@ class Like extends React.Component {
     const { likes } = this.props;
 
     return (
-      <div>
-        <button onClick={this._incrementLikes}>
-          { likes }
-        </button>
-      </div>
+      <ButtonToolbar>
+        <Button onClick={this._incrementLikes}>
+          { likes } <Glyphicon glyph="thumbs-up" />
+        </Button>
+      </ButtonToolbar>
     );
   }
 

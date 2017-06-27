@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Grid, Row, Col } from 'react-bootstrap';
+
 import { posts } from 'constants/static/posts';
 
 import { map } from 'lodash/collection';
@@ -19,10 +21,19 @@ class BlogPage extends React.Component {
     const { posts } = this.state;
     const columns = this.pieChartColumns();
     return (
-      <div>
-        <BlogList posts={posts} incrementLikes={this._incrementLikes} />
-        <PieChart columns={columns} />
-      </div>
+      <Grid>
+        <Row className="show-grid">
+          <Col md={12}>
+            <BlogList posts={posts} incrementLikes={this._incrementLikes} />
+          </Col>
+        </Row>
+
+        <Row className="show-grid">
+          <Col md={12}>
+            <PieChart columns={columns} />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 
