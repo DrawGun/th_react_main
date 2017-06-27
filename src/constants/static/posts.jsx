@@ -6,7 +6,7 @@ export const posts = [
     id: 1,
     title: 'Первый немного текста',
     image: {
-      src: 'https://facebook.github.io/react/img/logo.svg',
+      src: 'dist/images/react.svg',
       alt: 'Alt 1',
       width: '100px',
       height: '100px'
@@ -22,7 +22,7 @@ export const posts = [
     id: 2,
     title: 'Второй немного текста',
     image: {
-      src: 'https://facebook.github.io/react/img/logo.svg',
+      src: 'dist/images/react.svg',
       alt: 'Alt 2',
       width: '100px',
       height: '100px'
@@ -38,7 +38,7 @@ export const posts = [
     id: 4,
     title: 'Четвертый немного текста',
     image: {
-      src: 'https://facebook.github.io/react/img/logo.svg',
+      src: 'dist/images/react.svg',
       alt: 'Alt 3',
       width: '100px',
       height: '100px'
