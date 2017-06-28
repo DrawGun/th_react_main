@@ -1,10 +1,14 @@
-class PieChart extends React.Component {
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import c3 from 'c3';
 
+class PieChart extends React.Component {
   componentDidMount() {
     this.pieChart = c3.generate({
       bindto: ReactDOM.findDOMNode(this.refs.pieChart),
       data: { columns: this.props.columns, type : 'pie' }
-    })
+    });
   }
 
   componentWillUnmount() {
@@ -17,16 +21,18 @@ class PieChart extends React.Component {
 
   render() {
     return (
-      <div ref="pieChart" />
-    )
+      <div ref='pieChart' />
+    );
   }
-
 }
 
 PieChart.propTypes = {
-  columns: React.PropTypes.array
+  columns: PropTypes.array
 };
 
 PieChart.defaultProps = {
   columns: []
 };
+
+
+export default PieChart;
