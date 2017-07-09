@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Grid, Row, Col } from 'react-bootstrap';
-
-import { posts } from 'constants/static/posts';
+import { Row, Col } from 'react-bootstrap';
 
 import { map } from 'lodash/collection';
+
+import request from 'superagent';
 
 import BlogList from 'components/widgets/blog/List';
 import PieChart from 'components/widgets/blog/PieChart';
@@ -13,15 +13,19 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { posts };
+    this.state = { posts: [] };
     this._incrementLikes = this._incrementLikes.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
   }
 
   render() {
     const { posts } = this.state;
     const columns = this.pieChartColumns();
     return (
-      <Grid>
+      <div className="blog-page">
         <Row className="show-grid">
           <Col md={12}>
             <BlogList posts={posts} incrementLikes={this._incrementLikes} />
@@ -33,7 +37,15 @@ class BlogPage extends React.Component {
             <PieChart columns={columns} />
           </Col>
         </Row>
-      </Grid>
+      </div>
+    );
+  }
+
+  fetchPosts() {
+    request.get(
+      'http://localhost:3001/',
+      {},
+      (err, res) => this.setState({ posts: res.body })
     );
   }
 

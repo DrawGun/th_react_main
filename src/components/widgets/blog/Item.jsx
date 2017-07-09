@@ -7,6 +7,9 @@ import TextBox from './elements/TextBox';
 import Image from './elements/Image';
 import MetaData from './elements/MetaData';
 import Like from './elements/Like';
+import Link from 'components/elements/Link';
+
+import { postsPath } from 'helpers/routes/posts';
 
 class BlogItem extends React.Component {
   constructor(props) {
@@ -19,7 +22,7 @@ class BlogItem extends React.Component {
     const { id, title, image, meta } = this.props;
     const { src, alt, width, height } = image;
     const { author, createdAt, updatedAt, likes } = meta;
-    const postTitle = this.postTitle(title);
+    const postTitle = this.postTitle(id, title);
 
     return (
       <Panel header={postTitle}>
@@ -47,11 +50,13 @@ class BlogItem extends React.Component {
     );
   }
 
-  postTitle(title) {
+  postTitle(id, title) {
     return (
-      <TextBox>
-        {title}
-      </TextBox>
+      <Link to={postsPath(id)}>
+        <TextBox>
+          {title}
+        </TextBox>
+      </Link>
     );
   }
 }
