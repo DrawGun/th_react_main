@@ -7,6 +7,7 @@ import {
 import MainLayout from 'components/layouts/MainLayout';
 import BlogPage from 'components/BlogPage';
 import Post from 'components/Post';
+import About from 'components/About';
 
 import { postsPath } from 'helpers/routes/posts';
 
@@ -15,6 +16,7 @@ const App = () => (
     <MainLayout>
       <Route exact path="/" component={BlogPage} />
       <Route exact path={postsPath()} component={Post} />
+      <Route exact path="/about" component={About} />
     </MainLayout>
   </Router>
 );
