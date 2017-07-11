@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, FormControl } from 'react-bootstrap';
 
 import { map } from 'lodash/collection';
 
@@ -9,12 +9,18 @@ import request from 'superagent';
 import BlogList from 'components/widgets/blog/List';
 import PieChart from 'components/widgets/blog/PieChart';
 
+import Paginations from 'components/elements/Paginations';
+import Spinner from 'components/elements/Spinner';
+
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { posts: [] };
-    this._incrementLikes = this._incrementLikes.bind(this);
+    const postsStep = 2;
+    this.state = { posts: [], step: postsStep, page: 1, loading: true };
+    this.incrementLikes = this.incrementLikes.bind(this);
+    this.setPage = this.setPage.bind(this);
+    this.handleSearchByPageTitle = this.handleSearchByPageTitle.bind(this);
   }
 
   componentDidMount() {
@@ -22,19 +28,49 @@ class BlogPage extends React.Component {
   }
 
   render() {
-    const { posts } = this.state;
-    const columns = this.pieChartColumns();
     return (
-      <div className="blog-page">
+      <div>
+        { this.state.loading && this.loader() }
+        { !this.state.loading && this.renderPosts() }
+      </div>
+    );
+  }
+
+  loader() {
+    return (
+      <Spinner />
+    );
+  }
+
+  renderPosts() {
+    const { posts, maxPosts, step, page } = this.state;
+    const columns = this.pieChartColumns();
+
+    return (
+      <div className="blog-page posts">
+        <form className="search-by-post-title">
+          <FormControl
+            type="text"
+            value={this.state.value}
+            placeholder="Поиск по заголовку статьи"
+            onChange={this.handleSearchByPageTitle} />
+        </form>
         <Row className="show-grid">
-          <Col md={12}>
-            <BlogList posts={posts} incrementLikes={this._incrementLikes} />
+          <Col md={6}>
+            <BlogList posts={posts} incrementLikes={this.incrementLikes} />
+          </Col>
+          <Col md={6}>
+            <PieChart columns={columns} />
           </Col>
         </Row>
 
-        <Row className="show-grid">
+        <Row className="show-grid text-center">
           <Col md={12}>
-            <PieChart columns={columns} />
+            <Paginations
+              maxItems={ maxPosts }
+              step={ step }
+              activePage={ page }
+              onSelect={this.setPage} />
           </Col>
         </Row>
       </div>
@@ -42,14 +78,28 @@ class BlogPage extends React.Component {
   }
 
   fetchPosts() {
-    request.get(
-      'http://localhost:3001/',
-      {},
-      (err, res) => this.setState({ posts: res.body })
-    );
+    const self = this;
+    const { page, step, query } = this.state;
+
+    let url = `http://localhost:3001/?page=${page}&step=${step}`;
+    if (query) {
+      url += `&query=${query}`;
+    }
+
+    request.get(url)
+      .then(function(res) {
+        self.setState({
+          posts: res.body,
+          maxPosts: res.headers['max-posts'],
+          loading: false
+        });
+      })
+      .catch(function(e) {
+        console.log(e.res);
+      });
   }
 
-  _incrementLikes(postId) {
+  incrementLikes(postId) {
     const { posts } = this.state;
     const updatedPosts = map(
       posts,
@@ -68,6 +118,20 @@ class BlogPage extends React.Component {
       posts,
       (post) => ([post.title, post.meta.likes])
     );
+  }
+
+  setPage(page) {
+    const self = this;
+    this.setState({ page, loading: true }, function() {
+      self.fetchPosts();
+    });
+  }
+
+  handleSearchByPageTitle(e) {
+    const self = this;
+    this.setState({ query: e.target.value }, function() {
+      self.fetchPosts();
+    });
   }
 }
 

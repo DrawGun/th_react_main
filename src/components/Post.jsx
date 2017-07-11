@@ -20,7 +20,7 @@ class Post extends React.Component {
   render() {
     const { post } = this.state;
     return (
-      <div className="blog-page">
+      <div className="blog-page post">
         <BlogItem
           key={post.id}
           id={post.id}
