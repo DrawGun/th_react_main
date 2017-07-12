@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { map } from 'lodash/collection';
 
+import { postsPath } from 'helpers/routes/posts';
+
 import BlogItem from './Item';
 
 class List extends React.Component {
@@ -21,6 +23,7 @@ class List extends React.Component {
           title={post.title}
           image={post.image}
           meta={post.meta}
+          url={postsPath(post.id)}
           incrementLikes={this._incrementLikes} />
       )
     );

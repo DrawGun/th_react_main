@@ -16,11 +16,10 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    const postsStep = 2;
-    this.state = { posts: [], step: postsStep, page: 1, loading: true };
+    this.state = { posts: [], step: 2, page: 1, loading: true };
     this.incrementLikes = this.incrementLikes.bind(this);
     this.setPage = this.setPage.bind(this);
-    this.handleSearchByPageTitle = this.handleSearchByPageTitle.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
@@ -30,8 +29,7 @@ class BlogPage extends React.Component {
   render() {
     return (
       <div>
-        { this.state.loading && this.loader() }
-        { !this.state.loading && this.renderPosts() }
+        { this.state.loading ? <Spinner /> : this.renderPosts() }
       </div>
     );
   }
@@ -53,7 +51,7 @@ class BlogPage extends React.Component {
             type="text"
             value={this.state.value}
             placeholder="Поиск по заголовку статьи"
-            onChange={this.handleSearchByPageTitle} />
+            onChange={this.handleSearch} />
         </form>
         <Row className="show-grid">
           <Col md={6}>
@@ -78,7 +76,6 @@ class BlogPage extends React.Component {
   }
 
   fetchPosts() {
-    const self = this;
     const { page, step, query } = this.state;
 
     let url = `http://localhost:3001/?page=${page}&step=${step}`;
@@ -87,13 +84,13 @@ class BlogPage extends React.Component {
     }
 
     request.get(url)
-      .then(function(res) {
-        self.setState({
+      .then((res) => (
+        this.setState({
           posts: res.body,
           maxPosts: res.headers['max-posts'],
           loading: false
-        });
-      })
+        })
+      ))
       .catch(function(e) {
         console.log(e.res);
       });
@@ -121,17 +118,11 @@ class BlogPage extends React.Component {
   }
 
   setPage(page) {
-    const self = this;
-    this.setState({ page, loading: true }, function() {
-      self.fetchPosts();
-    });
+    this.setState({ page, loading: true }, () => (this.fetchPosts()));
   }
 
-  handleSearchByPageTitle(e) {
-    const self = this;
-    this.setState({ query: e.target.value }, function() {
-      self.fetchPosts();
-    });
+  handleSearch(e) {
+    this.setState({ query: e.target.value }, () => (this.fetchPosts()));
   }
 }
 
