@@ -21,6 +21,7 @@ class List extends React.Component {
           title={post.title}
           image={post.image}
           meta={post.meta}
+          url={post.url}
           incrementLikes={this._incrementLikes} />
       )
     );

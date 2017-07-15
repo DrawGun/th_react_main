@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { Panel, Media } from 'react-bootstrap';
 
-import TextBox from './elements/TextBox';
 import Image from './elements/Image';
 import MetaData from './elements/MetaData';
 import Like from './elements/Like';
+import Title from './elements/Title';
 
 class BlogItem extends React.Component {
   constructor(props) {
@@ -16,13 +16,12 @@ class BlogItem extends React.Component {
   }
 
   render() {
-    const { id, title, image, meta } = this.props;
+    const { id, title, image, meta, url } = this.props;
     const { src, alt, width, height } = image;
     const { author, createdAt, updatedAt, likes } = meta;
-    const postTitle = this.postTitle(title);
 
     return (
-      <Panel header={postTitle}>
+      <Panel header={<Title text={title} url={url} />}>
         <Media>
           <Media.Left align="top">
             <Image
@@ -46,19 +45,12 @@ class BlogItem extends React.Component {
       </Panel>
     );
   }
-
-  postTitle(title) {
-    return (
-      <TextBox>
-        {title}
-      </TextBox>
-    );
-  }
 }
 
 BlogItem.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
+  url: PropTypes.string,
   image: PropTypes.shape(Image.propTypes),
   meta: PropTypes.object,
   incrementLikes: PropTypes.func

@@ -1,43 +1,100 @@
 import React from 'react';
 
-import { Grid, Row, Col } from 'react-bootstrap';
-
-import { posts } from 'constants/static/posts';
+import { Row, Col } from 'react-bootstrap';
 
 import { map } from 'lodash/collection';
 
+import { postsPath } from 'helpers/routes/posts';
+
+import request from 'superagent';
+
 import BlogList from 'components/widgets/blog/List';
 import PieChart from 'components/widgets/blog/PieChart';
+
+import Pagination from 'components/elements/Pagination';
+import Spinner from 'components/elements/Spinner';
+import Search from 'components/elements/Search';
 
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { posts };
-    this._incrementLikes = this._incrementLikes.bind(this);
+    this.state = { posts: [], step: 2, page: 1, loading: true };
+    this.incrementLikes = this.incrementLikes.bind(this);
+    this.setPage = this.setPage.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
   }
 
   render() {
-    const { posts } = this.state;
-    const columns = this.pieChartColumns();
     return (
-      <Grid>
-        <Row className="show-grid">
-          <Col md={12}>
-            <BlogList posts={posts} incrementLikes={this._incrementLikes} />
-          </Col>
-        </Row>
-
-        <Row className="show-grid">
-          <Col md={12}>
-            <PieChart columns={columns} />
-          </Col>
-        </Row>
-      </Grid>
+      <div>
+        { this.state.loading ? <Spinner /> : this.renderPosts() }
+      </div>
     );
   }
 
-  _incrementLikes(postId) {
+  renderPosts() {
+    const { posts, maxPosts, step, page } = this.state;
+    const columns = this.pieChartColumns();
+
+    return (
+      <div className="blog-page posts">
+        <Search handleSearch={ this.handleSearch } />
+        <Row className="show-grid">
+          <Col md={6}>
+            <BlogList posts={posts} incrementLikes={this.incrementLikes} />
+          </Col>
+          <Col md={6}>
+            <PieChart columns={columns} />
+          </Col>
+        </Row>
+
+        <Row className="show-grid text-center">
+          <Col md={12}>
+            <Pagination
+              maxItems={ maxPosts }
+              step={ step }
+              activePage={ page }
+              onSelect={this.setPage} />
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+
+  fetchPosts() {
+    const { page, step, query } = this.state;
+
+    let url = `http://localhost:3001/?page=${page}&step=${step}`;
+    if (query) {
+      url += `&query=${query}`;
+    }
+
+    request.get(url)
+      .then((res) => {
+        const posts = map(
+          res.body,
+          (post) => (
+            { ...post, url: postsPath(post.id) }
+          )
+        );
+
+        this.setState({
+          posts,
+          maxPosts: res.headers['max-posts'],
+          loading: false
+        });
+      })
+      .catch(function(e) {
+        console.log(e);
+      });
+  }
+
+  incrementLikes(postId) {
     const { posts } = this.state;
     const updatedPosts = map(
       posts,
@@ -56,6 +113,14 @@ class BlogPage extends React.Component {
       posts,
       (post) => ([post.title, post.meta.likes])
     );
+  }
+
+  setPage(page) {
+    this.setState({ page, loading: true }, () => (this.fetchPosts()));
+  }
+
+  handleSearch(value) {
+    this.setState({ query: value }, () => (this.fetchPosts()));
   }
 }
 
