@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { Row, Col, FormControl } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import { map } from 'lodash/collection';
+
+import { postsPath } from 'helpers/routes/posts';
 
 import request from 'superagent';
 
@@ -11,6 +13,7 @@ import PieChart from 'components/widgets/blog/PieChart';
 
 import Pagination from 'components/elements/Pagination';
 import Spinner from 'components/elements/Spinner';
+import Search from 'components/elements/Search';
 
 class BlogPage extends React.Component {
   constructor(props) {
@@ -34,25 +37,13 @@ class BlogPage extends React.Component {
     );
   }
 
-  loader() {
-    return (
-      <Spinner />
-    );
-  }
-
   renderPosts() {
     const { posts, maxPosts, step, page } = this.state;
     const columns = this.pieChartColumns();
 
     return (
       <div className="blog-page posts">
-        <form className="search-by-post-title">
-          <FormControl
-            type="text"
-            value={this.state.value}
-            placeholder="Поиск по заголовку статьи"
-            onChange={this.handleSearch} />
-        </form>
+        <Search handleSearch={ this.handleSearch } />
         <Row className="show-grid">
           <Col md={6}>
             <BlogList posts={posts} incrementLikes={this.incrementLikes} />
@@ -84,15 +75,22 @@ class BlogPage extends React.Component {
     }
 
     request.get(url)
-      .then((res) => (
+      .then((res) => {
+        const posts = map(
+          res.body,
+          (post) => (
+            { ...post, url: postsPath(post.id) }
+          )
+        );
+
         this.setState({
-          posts: res.body,
+          posts,
           maxPosts: res.headers['max-posts'],
           loading: false
-        })
-      ))
+        });
+      })
       .catch(function(e) {
-        console.log(e.res);
+        console.log(e);
       });
   }
 
@@ -121,8 +119,8 @@ class BlogPage extends React.Component {
     this.setState({ page, loading: true }, () => (this.fetchPosts()));
   }
 
-  handleSearch(e) {
-    this.setState({ query: e.target.value }, () => (this.fetchPosts()));
+  handleSearch(value) {
+    this.setState({ query: value }, () => (this.fetchPosts()));
   }
 }
 
