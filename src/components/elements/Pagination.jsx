@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Pagination } from 'react-bootstrap';
+import { Pagination as BootstrapPagination } from 'react-bootstrap';
 
-class Paginations extends React.Component {
+class Pagination extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -13,7 +13,7 @@ class Paginations extends React.Component {
     const items = Math.round(maxItems / step);
 
     return (
-      <Pagination
+      <BootstrapPagination
         bsSize={ bsSize }
         items={ items }
         activePage={ activePage }
@@ -22,19 +22,19 @@ class Paginations extends React.Component {
   }
 }
 
-Paginations.propTypes = {
-  maxItems: PropTypes.string,
+Pagination.propTypes = {
+  maxItems: PropTypes.number,
   step: PropTypes.number,
   onSelect: PropTypes.func,
   bsSize: PropTypes.string,
   activePage: PropTypes.number
 };
 
-Paginations.defaultProps = {
+Pagination.defaultProps = {
   activePage: 1,
   maxItems: 10,
   step: 2,
   bsSize: 'large'
 };
 
-export default Paginations;
+export default Pagination;

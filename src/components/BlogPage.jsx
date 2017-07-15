@@ -9,7 +9,7 @@ import request from 'superagent';
 import BlogList from 'components/widgets/blog/List';
 import PieChart from 'components/widgets/blog/PieChart';
 
-import Paginations from 'components/elements/Paginations';
+import Pagination from 'components/elements/Pagination';
 import Spinner from 'components/elements/Spinner';
 
 class BlogPage extends React.Component {
@@ -64,7 +64,7 @@ class BlogPage extends React.Component {
 
         <Row className="show-grid text-center">
           <Col md={12}>
-            <Paginations
+            <Pagination
               maxItems={ maxPosts }
               step={ step }
               activePage={ page }
