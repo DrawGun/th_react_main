@@ -22,7 +22,7 @@ import { fetchPost } from 'actions/Post';
 import prepareData from 'helpers/prepareData';
 import DevTools from 'containers/DevTools';
 
-history.listenBefore(function(location) {
+history.listen(function(location) {
   match({ history, location}, (error, redirect, state) => {
     if (!error && !redirect) {
       prepareData(store, state);
