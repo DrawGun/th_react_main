@@ -12,7 +12,7 @@ class Post extends React.Component {
     super(props);
 
     this.state = { post: {} };
-    this._incrementLikes = this._incrementLikes.bind(this);
+    // this._incrementLikes = this._incrementLikes.bind(this);
   }
 
   componentDidMount() {

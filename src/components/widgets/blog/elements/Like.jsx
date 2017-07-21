@@ -7,7 +7,7 @@ class Like extends React.Component {
   constructor(props) {
     super(props);
 
-    this._incrementLikes = this._incrementLikes.bind(this);
+    // this._incrementLikes = this._incrementLikes.bind(this);
   }
 
   render() {

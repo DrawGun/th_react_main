@@ -8,7 +8,7 @@ import BlogItem from './Item';
 class List extends React.Component {
   constructor(props) {
     super(props);
-    this._incrementLikes = this.props.incrementLikes.bind(this);
+    // this._incrementLikes = this.props.incrementLikes.bind(this);
   }
 
   render() {
