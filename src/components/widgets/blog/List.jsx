@@ -12,7 +12,7 @@ class List extends React.Component {
 
   render() {
     const posts = map(
-      this.props.items,
+      this.props.posts,
       (post) => (
         <BlogItem
           key={post.id}
@@ -20,8 +20,7 @@ class List extends React.Component {
           title={post.title}
           image={post.image}
           meta={post.meta}
-          url={post.url}
-          incrementLikes={this._incrementLikes} />
+          url={post.url} />
       )
     );
 
@@ -34,12 +33,11 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  items: PropTypes.array,
-  incrementLikes: PropTypes.func
+  posts: PropTypes.array
 };
 
 List.defaultProps = {
-  items: []
+  posts: []
 };
 
 export default List;

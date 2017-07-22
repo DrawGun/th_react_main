@@ -36,8 +36,7 @@ class BlogItem extends React.Component {
 
             <Like
               id={id}
-              likes={likes}
-              incrementLikes={this._incrementLikes} />
+              likes={likes} />
           </Media.Body>
         </Media>
       </Panel>
@@ -50,8 +49,7 @@ BlogItem.propTypes = {
   title: PropTypes.string,
   url: PropTypes.string,
   image: PropTypes.shape(Image.propTypes),
-  meta: PropTypes.object,
-  incrementLikes: PropTypes.func
+  meta: PropTypes.object
 };
 
 BlogItem.defaultProps = {

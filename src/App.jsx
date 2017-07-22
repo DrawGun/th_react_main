@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { BrowserRouter as Router, matchPath, Switch } from 'react-router-dom';
+import { Router, matchPath, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { parse } from 'qs';
 import { assign } from 'lodash/object';
@@ -23,7 +23,7 @@ class App extends React.Component {
 
     function historyCb(location) {
       const routeState = { location, params: {}, routes: [], query: {}};
-      console.log(routeState);
+
       routes.some(route => {
         const match = matchPath(location.pathname, route);
 
