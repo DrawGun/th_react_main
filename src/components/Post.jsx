@@ -7,15 +7,15 @@ import { postsPath } from 'helpers/routes/posts';
 
 class Post extends React.Component {
   constructor(props) {
-    console.log(props);
+    // console.log(props);
     super(props);
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   render() {
-    console.log('1');
+    // console.log('1');
     const { item, isFetching } = this.props;
-    console.log('2');
+    // console.log('2');
     return (
       !isFetching && item && this.renderPost(item)
     );

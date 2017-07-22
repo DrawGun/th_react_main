@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { BrowserRouter as Router, matchPath } from 'react-router-dom';
+import { BrowserRouter as Router, matchPath, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { parse } from 'qs';
 import { assign } from 'lodash/object';
@@ -10,7 +10,7 @@ import store from 'store';
 import createRoutes from 'routes';
 
 import prepareData from 'helpers/prepareData';
-import history from 'helpers/history';
+import history from 'routes/history';
 import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
 
 import MainLayout from 'components/layouts/MainLayout';
@@ -23,7 +23,7 @@ class App extends React.Component {
 
     function historyCb(location) {
       const routeState = { location, params: {}, routes: [], query: {}};
-
+      console.log(routeState);
       routes.some(route => {
         const match = matchPath(location.pathname, route);
 
@@ -47,9 +47,11 @@ class App extends React.Component {
       <Provider store={store}>
         <Router history={history}>
           <MainLayout>
-            {routes.map((route, i) => (
-              <RouteWithSubRoutes key={i} {...route}/>
-            ))}
+            <Switch>
+              {routes.map((route, i) => (
+                <RouteWithSubRoutes key={i} {...route}/>
+              ))}
+            </Switch>
           </MainLayout>
         </Router>
       </Provider>
