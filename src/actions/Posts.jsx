@@ -3,6 +3,9 @@ import request from 'superagent';
 import { API_ROOT } from 'constants/API';
 import * as types from 'constants/actionTypes/PostsActionTypes';
 
+import { map } from 'lodash/collection';
+import { postsPath } from 'helpers/routes/posts';
+
 const requestPosts = () => ({
   type: types.FETCH_POSTS_REQUEST
 });
@@ -23,7 +26,14 @@ export function fetchPosts() {
     return request
       .get(`${API_ROOT}/`)
       .end((err, response) => {
-        err ? dispatch(errorPosts()) : dispatch(recivePosts(response.body));
+        const posts = map(
+          response.body,
+          (post) => (
+            { ...post, url: postsPath(post.id) }
+          )
+        );
+
+        err ? dispatch(errorPosts()) : dispatch(recivePosts(posts));
       });
   };
 }

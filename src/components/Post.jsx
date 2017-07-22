@@ -5,18 +5,11 @@ import BlogItem from 'components/widgets/blog/Item';
 
 import { postsPath } from 'helpers/routes/posts';
 
-import request from 'superagent';
-
 class Post extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { post: {} };
-    // this._incrementLikes = this._incrementLikes.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchPost();
   }
 
   render() {
@@ -33,22 +26,6 @@ class Post extends React.Component {
           incrementLikes={this._incrementLikes} />
       </div>
     );
-  }
-
-  fetchPost() {
-    const postId = this.props.match.params.id;
-    const self = this;
-    request.get(
-      `http://localhost:3001/posts/${postId}`
-    ).end(function(err, res) {
-      self.setState({ post: res.body });
-    });
-  }
-
-  _incrementLikes(_ignoredPostId) {
-    const { post } = this.state;
-    const likes = post.meta.likes + 1;
-    this.setState({ post: { ...post, meta: { ...post.meta, likes }}});
   }
 }
 

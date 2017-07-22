@@ -1,57 +1,56 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { match, withRouter } from 'react-router';
-import {
-  BrowserRouter as Router, Route
-} from 'react-router-dom';
+import { BrowserRouter as Router, matchPath } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
+import { parse } from 'qs';
+import { assign } from 'lodash/object';
+
 import store from 'store';
+import createRoutes from 'routes';
+
+import prepareData from 'helpers/prepareData';
+import history from 'helpers/history';
+import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
 
 import MainLayout from 'components/layouts/MainLayout';
 
-import PostsContainer from 'containers/PostsContainer';
-import PostContainer from 'containers/PostContainer';
-
-import About from 'components/About';
-
-import history from 'helpers/history';
-
-import { postsPath } from 'helpers/routes/posts';
-import { fetchPosts } from 'actions/Posts';
-import { fetchPost } from 'actions/Post';
-import prepareData from 'helpers/prepareData';
 import DevTools from 'containers/DevTools';
 
 class App extends React.Component {
   render() {
-    history.listen(function(location) {
-      match({ history, location}, (error, redirect, state) => {
-        if (!error && !redirect) {
-          prepareData(store, state);
+    const routes = createRoutes();
+
+    function historyCb(location) {
+      const routeState = { location, params: {}, routes: [], query: {}};
+
+      routes.some(route => {
+        const match = matchPath(location.pathname, route);
+
+        if (match) {
+          routeState.routes.push(route);
+          assign(routeState.params, match.params);
+          assign(routeState.query, parse(location.search.substr(1)));
         }
+
+        return match;
       });
-    });
-    console.log(withRouter(App)());
+
+      prepareData(store, routeState);
+    }
+
+    history.listen(historyCb);
+
+    historyCb(window.location);
+
     return (
       <Provider store={store}>
         <Router>
           <MainLayout>
-            <Route
-              exact
-              path="/"
-              component={PostsContainer}
-              prepareData={(store) => store.dispatch(fetchPosts())} />
-            <Route
-              exact
-              path={postsPath()}
-              component={PostContainer}
-              prepareData={
-                (store, query, params) => {
-                  store.dispatch(fetchPost(params.id));
-                }} />
-            <Route exact path="/about" component={About} />
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route}/>
+            ))}
           </MainLayout>
         </Router>
       </Provider>

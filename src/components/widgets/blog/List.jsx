@@ -8,12 +8,11 @@ import BlogItem from './Item';
 class List extends React.Component {
   constructor(props) {
     super(props);
-    // this._incrementLikes = this.props.incrementLikes.bind(this);
   }
 
   render() {
     const posts = map(
-      this.props.posts,
+      this.props.items,
       (post) => (
         <BlogItem
           key={post.id}
@@ -35,12 +34,12 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  posts: PropTypes.array,
+  items: PropTypes.array,
   incrementLikes: PropTypes.func
 };
 
 List.defaultProps = {
-  posts: []
+  items: []
 };
 
 export default List;
