@@ -28,7 +28,7 @@ class BlogPage extends React.Component {
   renderPosts() {
     const { items, maxPosts, step, page } = this.props;
     const columns = this.pieChartColumns();
-    console.log(items);
+
     return (
       <div className="blog-page posts">
         <Search handleSearch={ this.handleSearch } />
