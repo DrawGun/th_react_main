@@ -7,13 +7,21 @@ import { postsPath } from 'helpers/routes/posts';
 
 class Post extends React.Component {
   constructor(props) {
+    console.log(props);
     super(props);
-
-    this.state = { post: {} };
+    console.log(this.props);
   }
 
   render() {
-    const { post } = this.state;
+    console.log('1');
+    const { item, isFetching } = this.props;
+    console.log('2');
+    return (
+      !isFetching && item && this.renderPost(item)
+    );
+  }
+
+  renderPost(post) {
     return (
       <div className="blog-page post">
         <BlogItem
@@ -30,9 +38,12 @@ class Post extends React.Component {
 }
 
 Post.propTypes = {
-  match: PropTypes.object,
-  location: PropTypes.object,
-  history: PropTypes.object
+  item: PropTypes.object,
+  isFetching: PropTypes.bool
+};
+
+Post.defaultProps = {
+  item: {}
 };
 
 export default Post;

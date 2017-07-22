@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 
 import { BrowserRouter as Router, matchPath } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
 import { parse } from 'qs';
 import { assign } from 'lodash/object';
 
@@ -46,7 +45,7 @@ class App extends React.Component {
 
     return (
       <Provider store={store}>
-        <Router>
+        <Router history={history}>
           <MainLayout>
             {routes.map((route, i) => (
               <RouteWithSubRoutes key={i} {...route}/>
