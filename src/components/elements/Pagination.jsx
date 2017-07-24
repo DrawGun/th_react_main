@@ -23,7 +23,7 @@ class Pagination extends React.Component {
 }
 
 Pagination.propTypes = {
-  maxItems: PropTypes.string,
+  maxItems: PropTypes.number,
   step: PropTypes.number,
   onSelect: PropTypes.func,
   bsSize: PropTypes.string,

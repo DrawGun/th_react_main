@@ -6,7 +6,10 @@ const Posts = {
   exact: true,
   path: '/',
   component: PostsContainer,
-  prepareData: (store) => store.dispatch(fetchPosts())
+  prepareData: (store) => {
+    const { page, step } = store.getState().posts;
+    store.dispatch(fetchPosts(page, step));
+  }
 };
 
 export default Posts;

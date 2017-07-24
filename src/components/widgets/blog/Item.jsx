@@ -5,8 +5,8 @@ import { Panel, Media } from 'react-bootstrap';
 
 import Image from './elements/Image';
 import MetaData from './elements/MetaData';
-import Like from './elements/Like';
 import Title from './elements/Title';
+import LikeContainer from 'containers/LikeContainer';
 
 class BlogItem extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class BlogItem extends React.Component {
   render() {
     const { id, title, image, meta, url } = this.props;
     const { src, alt, width, height } = image;
-    const { author, createdAt, updatedAt, likes } = meta;
+    const { author, createdAt, updatedAt } = meta;
 
     return (
       <Panel header={<Title text={title} url={url} />}>
@@ -34,9 +34,7 @@ class BlogItem extends React.Component {
               createdAt={createdAt}
               updatedAt={updatedAt} />
 
-            <Like
-              id={id}
-              likes={likes} />
+            <LikeContainer itemId={id} itemType='Post' />
           </Media.Body>
         </Media>
       </Panel>

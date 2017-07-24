@@ -13,6 +13,8 @@ import Search from 'components/elements/Search';
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
+    this.setPage = this.props.setPage.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   render() {
@@ -62,19 +64,24 @@ class BlogPage extends React.Component {
       (post) => ([post.title, post.meta.likes])
     );
   }
+
+  handleSearch() {
+    return console.log('handleSearch()');
+  }
 }
 
 BlogPage.propTypes = {
   items: PropTypes.array,
-  maxPosts: PropTypes.string,
+  maxPosts: PropTypes.number,
   step: PropTypes.number,
   page: PropTypes.number,
-  isFetching: PropTypes.bool
+  isFetching: PropTypes.bool,
+  setPage: PropTypes.func
 };
 
 BlogPage.defaultProps = {
   items: [],
-  maxPosts: '3',
+  maxPosts: 3,
   step: 2,
   page: 1,
   isFetching: true
