@@ -15,19 +15,20 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_POSTS_REQUEST:
-      return assign({}, initialState, { isFetching: true });
+      return assign({}, state, { isFetching: true });
     case types.FETCH_POSTS_ERROR:
-      return assign({}, initialState, { error: true });
+      return assign({}, state, { error: true });
     case types.FETCH_POSTS_SUCCESS:
-      return assign({}, initialState, {
+      return assign({}, state, {
         entries: action.response,
-        maxPosts: action.maxPosts
+        maxPosts: action.maxPosts,
+        isFetching: false
       });
     case types.SET_PAGE:
-      return assign({}, initialState, { page: action.page });
+      return assign({}, state, { page: action.page });
     case types.ADD_LIKE:
-      return assign({}, initialState, {
-        entries: incrementLikes(state.entries, action.postId)
+      return assign({}, state, {
+        entries: incrementLikes(state.entries, action.itemId)
       });
     default:
       return state;

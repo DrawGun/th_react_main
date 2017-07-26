@@ -33,7 +33,7 @@ export function setPage(page, step = 2) {
   return (dispatch) => {
     dispatch(setNewPage(page));
 
-    return delay(1000).then(() => {
+    return delay(500).then(() => {
       dispatch(fetchPosts(page, step));
     });
   };

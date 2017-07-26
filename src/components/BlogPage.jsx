@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Row, Col } from 'react-bootstrap';
-import { map } from 'lodash/collection';
 
+import PieChartContainer from 'containers/PieChartContainer';
 import BlogList from 'components/widgets/blog/List';
-import PieChart from 'components/widgets/blog/PieChart';
 import Pagination from 'components/elements/Pagination';
 import Spinner from 'components/elements/Spinner';
 import Search from 'components/elements/Search';
@@ -29,7 +28,6 @@ class BlogPage extends React.Component {
 
   renderPosts() {
     const { items, maxPosts, step, page } = this.props;
-    const columns = this.pieChartColumns();
 
     return (
       <div className="blog-page posts">
@@ -39,7 +37,7 @@ class BlogPage extends React.Component {
             <BlogList posts={items} />
           </Col>
           <Col md={6}>
-            <PieChart columns={columns} />
+            <PieChartContainer />
           </Col>
         </Row>
 
@@ -56,14 +54,14 @@ class BlogPage extends React.Component {
     );
   }
 
-  pieChartColumns() {
-    const { items } = this.props;
-
-    return map(
-      items,
-      (post) => ([post.title, post.meta.likes])
-    );
-  }
+  // pieChartColumns() {
+  //   const { items } = this.props;
+  //
+    // return map(
+    //   items,
+    //   (post) => ([post.title, post.meta.likes])
+    // );
+  // }
 
   handleSearch() {
     return console.log('handleSearch()');

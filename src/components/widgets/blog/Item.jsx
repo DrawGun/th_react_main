@@ -34,7 +34,7 @@ class BlogItem extends React.Component {
               createdAt={createdAt}
               updatedAt={updatedAt} />
 
-            <LikeContainer itemId={id} itemType='Post' />
+            { id && <LikeContainer itemId={id} itemType='Post' /> }
           </Media.Body>
         </Media>
       </Panel>

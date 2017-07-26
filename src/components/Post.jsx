@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import BlogItem from 'components/widgets/blog/Item';
 
-import { postsPath } from 'helpers/routes/posts';
-
 class Post extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +24,7 @@ class Post extends React.Component {
           title={post.title}
           image={post.image}
           meta={post.meta}
-          url={postsPath(post.id)}
+          url={post.url}
           incrementLikes={this._incrementLikes} />
       </div>
     );
