@@ -1,24 +1,67 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-import {
-  BrowserRouter as Router, Route
-} from 'react-router-dom';
+import { Router, matchPath, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { parse } from 'qs';
+import { assign } from 'lodash/object';
+
+import store from 'store';
+import createRoutes from 'routes';
+
+import prepareData from 'helpers/prepareData';
+import history from 'routes/history';
+import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
 
 import MainLayout from 'components/layouts/MainLayout';
-import BlogPage from 'components/BlogPage';
-import Post from 'components/Post';
-import About from 'components/About';
 
-import { postsPath } from 'helpers/routes/posts';
+import DevTools from 'containers/DevTools';
 
-const App = () => (
-  <Router>
-    <MainLayout>
-      <Route exact path="/" component={BlogPage} />
-      <Route exact path={postsPath()} component={Post} />
-      <Route exact path="/about" component={About} />
-    </MainLayout>
-  </Router>
+const routes = createRoutes();
+function historyCb(location) {
+  const routeState = { location, params: {}, routes: [], query: {}};
+
+  routes.some(route => {
+    const match = matchPath(location.pathname, route);
+
+    if (match) {
+      routeState.routes.push(route);
+      assign(routeState.params, match.params);
+      assign(routeState.query, parse(location.search.substr(1)));
+    }
+
+    return match;
+  });
+
+  prepareData(store, routeState);
+}
+
+class App extends React.Component {
+  componentWillMount() {
+    history.listen(historyCb);
+    historyCb(window.location);
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <Router history={history}>
+          <MainLayout>
+            <Switch>
+              {routes.map((route, i) => (
+                <RouteWithSubRoutes key={i} {...route}/>
+              ))}
+            </Switch>
+          </MainLayout>
+        </Router>
+      </Provider>
+    );
+  }
+}
+
+ReactDOM.render(
+  <DevTools store={store} />,
+  document.getElementById('devtools')
 );
 
 export default App;

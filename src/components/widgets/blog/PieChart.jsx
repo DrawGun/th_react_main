@@ -16,6 +16,7 @@ class PieChart extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.pieChart.unload();
     this.pieChart.load({ columns: nextProps.columns });
   }
 

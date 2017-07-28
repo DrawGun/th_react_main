@@ -8,7 +8,6 @@ import BlogItem from './Item';
 class List extends React.Component {
   constructor(props) {
     super(props);
-    this._incrementLikes = this.props.incrementLikes.bind(this);
   }
 
   render() {
@@ -21,8 +20,7 @@ class List extends React.Component {
           title={post.title}
           image={post.image}
           meta={post.meta}
-          url={post.url}
-          incrementLikes={this._incrementLikes} />
+          url={post.url} />
       )
     );
 
@@ -35,8 +33,7 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  posts: PropTypes.array,
-  incrementLikes: PropTypes.func
+  posts: PropTypes.array
 };
 
 List.defaultProps = {

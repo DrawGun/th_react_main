@@ -5,20 +5,18 @@ import { Panel, Media } from 'react-bootstrap';
 
 import Image from './elements/Image';
 import MetaData from './elements/MetaData';
-import Like from './elements/Like';
 import Title from './elements/Title';
+import LikeContainer from 'containers/LikeContainer';
 
 class BlogItem extends React.Component {
   constructor(props) {
     super(props);
-
-    this._incrementLikes = this.props.incrementLikes.bind(this);
   }
 
   render() {
     const { id, title, image, meta, url } = this.props;
     const { src, alt, width, height } = image;
-    const { author, createdAt, updatedAt, likes } = meta;
+    const { author, createdAt, updatedAt } = meta;
 
     return (
       <Panel header={<Title text={title} url={url} />}>
@@ -36,10 +34,7 @@ class BlogItem extends React.Component {
               createdAt={createdAt}
               updatedAt={updatedAt} />
 
-            <Like
-              id={id}
-              likes={likes}
-              incrementLikes={this._incrementLikes} />
+            { id && <LikeContainer itemId={id} itemType='Post' /> }
           </Media.Body>
         </Media>
       </Panel>
@@ -52,8 +47,7 @@ BlogItem.propTypes = {
   title: PropTypes.string,
   url: PropTypes.string,
   image: PropTypes.shape(Image.propTypes),
-  meta: PropTypes.object,
-  incrementLikes: PropTypes.func
+  meta: PropTypes.object
 };
 
 BlogItem.defaultProps = {
