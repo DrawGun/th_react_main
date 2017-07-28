@@ -17,32 +17,32 @@ import MainLayout from 'components/layouts/MainLayout';
 
 import DevTools from 'containers/DevTools';
 
-class App extends React.Component {
-  render() {
-    const routes = createRoutes();
+const routes = createRoutes();
+function historyCb(location) {
+  const routeState = { location, params: {}, routes: [], query: {}};
 
-    function historyCb(location) {
-      const routeState = { location, params: {}, routes: [], query: {}};
+  routes.some(route => {
+    const match = matchPath(location.pathname, route);
 
-      routes.some(route => {
-        const match = matchPath(location.pathname, route);
-
-        if (match) {
-          routeState.routes.push(route);
-          assign(routeState.params, match.params);
-          assign(routeState.query, parse(location.search.substr(1)));
-        }
-
-        return match;
-      });
-
-      prepareData(store, routeState);
+    if (match) {
+      routeState.routes.push(route);
+      assign(routeState.params, match.params);
+      assign(routeState.query, parse(location.search.substr(1)));
     }
 
+    return match;
+  });
+
+  prepareData(store, routeState);
+}
+
+class App extends React.Component {
+  componentWillMount() {
     history.listen(historyCb);
-
     historyCb(window.location);
+  }
 
+  render() {
     return (
       <Provider store={store}>
         <Router history={history}>
