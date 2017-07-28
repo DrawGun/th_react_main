@@ -6,10 +6,6 @@ import * as types from 'constants/actionTypes/PostsActionTypes';
 import { map } from 'lodash/collection';
 import { postsPath } from 'helpers/routes/posts';
 
-const delay = (ms) => new Promise(resolve =>
-  setTimeout(resolve, ms)
-);
-
 const requestPosts = () => ({
   type: types.FETCH_POSTS_REQUEST
 });
@@ -23,21 +19,6 @@ const recivePosts = (response, maxPosts) => ({
 const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
 });
-
-const setNewPage = (page) => ({
-  type: types.SET_PAGE,
-  page
-});
-
-export function setPage(page, step = 2) {
-  return (dispatch) => {
-    dispatch(setNewPage(page));
-
-    return delay(500).then(() => {
-      dispatch(fetchPosts(page, step));
-    });
-  };
-}
 
 export function fetchPosts(page, step) {
   return (dispatch) => {
