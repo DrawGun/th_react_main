@@ -10,10 +10,11 @@ const requestPosts = () => ({
   type: types.FETCH_POSTS_REQUEST
 });
 
-const recivePosts = (response, maxPosts) => ({
+const recivePosts = (response, maxPosts, page) => ({
   type: types.FETCH_POSTS_SUCCESS,
   response,
-  maxPosts
+  maxPosts,
+  page
 });
 
 const errorPosts = () => ({
@@ -34,7 +35,9 @@ export function fetchPosts(page, step) {
           )
         );
         const maxPosts =  parseInt(response.headers['max-posts']);
-        err ? dispatch(errorPosts()) : dispatch(recivePosts(posts, maxPosts));
+        err ?
+          dispatch(errorPosts()) :
+          dispatch(recivePosts(posts, maxPosts, page));
       });
   };
 }

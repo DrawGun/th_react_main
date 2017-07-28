@@ -12,7 +12,7 @@ import Search from 'components/elements/Search';
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-    this.setPage = this.setPage.bind(this);
+    this.setPage = this.props.setPage.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -52,10 +52,6 @@ class BlogPage extends React.Component {
         </Row>
       </div>
     );
-  }
-
-  setPage () {
-    return console.log('setPage()');
   }
 
   handleSearch() {

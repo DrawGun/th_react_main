@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import BlogPage from 'components/BlogPage';
+import { fetchPosts } from 'actions/Posts';
 
 const stateToProps = (state) => ({
   items: state.posts.entries,
@@ -11,4 +12,8 @@ const stateToProps = (state) => ({
   step: state.posts.step
 });
 
-export default connect(stateToProps)(BlogPage);
+const actionsToProps = (dispatch) => ({
+  setPage: (page) => dispatch(fetchPosts(page, 2))
+});
+
+export default connect(stateToProps, actionsToProps)(BlogPage);

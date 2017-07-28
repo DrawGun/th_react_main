@@ -22,6 +22,7 @@ export default function(state = initialState, action) {
       return assign({}, state, {
         entries: action.response,
         maxPosts: action.maxPosts,
+        page: action.page,
         isFetching: false
       });
     case types.SET_PAGE:
