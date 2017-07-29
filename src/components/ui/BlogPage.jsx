@@ -18,21 +18,21 @@ class BlogPage extends React.Component {
   }
 
   render() {
-    const { isFetching } = this.props;
+    const { isFetching, query } = this.props;
 
     return (
-      <div>
+      <div className="blog-page posts">
+        <Search handleSearch={ this.handleSearch } query={ query || '' } />
         { isFetching ? <Spinner /> : this.renderPosts() }
       </div>
     );
   }
 
   renderPosts() {
-    const { items, maxPosts, step, page, query } = this.props;
-    console.log(query);
+    const { items, maxPosts, step, page } = this.props;
+
     return (
-      <div className="blog-page posts">
-        <Search handleSearch={ this.handleSearch } query={ query } />
+      <div>
         <Row className="show-grid">
           <Col md={6}>
             <BlogList posts={items} />

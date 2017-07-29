@@ -30,11 +30,13 @@ class Search extends React.Component {
 
 Search.propTypes = {
   handleSearch: PropTypes.func,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  query: PropTypes.string
 };
 
 Search.defaultProps = {
-  placeholder: 'Поиск'
+  placeholder: 'Поиск',
+  query: ''
 };
 
 export default Search;
