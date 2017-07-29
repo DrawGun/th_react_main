@@ -10,11 +10,12 @@ class Search extends React.Component {
   }
 
   render() {
-    const { placeholder } = this.props;
+    const { placeholder, query } = this.props;
     return (
       <form className="search-by-post-title">
         <FormControl
           type="text"
+          value={query}
           placeholder={placeholder}
           onChange={this.handleSearch} />
       </form>
