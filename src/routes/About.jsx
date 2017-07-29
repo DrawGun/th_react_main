@@ -1,4 +1,4 @@
-import AboutPage from 'components/About';
+import AboutPage from 'components/ui/About';
 
 const About = {
   exact: true,
