@@ -14,11 +14,11 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_LIKE_REQUEST:
-      return assign({}, initialState, { isFetching: true });
+      return assign({}, state, { isFetching: true });
     case types.FETCH_LIKE_ERROR:
-      return assign({}, initialState, { error: true });
+      return assign({}, state, { error: true });
     case types.FETCH_LIKE_SUCCESS:
-      return assign({}, initialState, {
+      return assign({}, state, {
         entries: map(
           state.entries,
           (item) => (
@@ -26,10 +26,11 @@ export default function(state = initialState, action) {
               { ...item, likes: action.response.body.meta.likes } :
               item
           )
-        )
+        ),
+        isFetching: false
       });
     case postsTypes.FETCH_POSTS_SUCCESS:
-      return assign({}, initialState, {
+      return assign({}, state, {
         entries: map(
           action.response.body,
           (item) => (
@@ -38,7 +39,7 @@ export default function(state = initialState, action) {
         )
       });
     case postTypes.FETCH_POST_SUCCESS:
-      return assign({}, initialState, {
+      return assign({}, state, {
         entries: [
           {
             id: action.response.body.id,
