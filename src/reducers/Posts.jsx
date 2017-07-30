@@ -1,5 +1,4 @@
 import { assign } from 'lodash/object';
-import { map } from 'lodash/collection';
 
 import * as types from 'constants/actionTypes/PostsActionTypes';
 
@@ -28,20 +27,7 @@ export default function(state = initialState, action) {
         query: action.response.query.query,
         isFetching: false
       });
-    case types.ADD_LIKE:
-      return assign({}, state, {
-        entries: incrementLikes(state.entries, action.itemId)
-      });
     default:
       return state;
   }
 }
-
-const incrementLikes = (posts, postId) => (
-  map(
-    posts,
-    (post) => (
-      (post.id === postId) ?
-        { ...post, meta: { ...post.meta, likes: post.meta.likes + 1 }} : post)
-  )
-);
