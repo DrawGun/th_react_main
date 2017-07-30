@@ -1,5 +1,4 @@
 import { assign } from 'lodash/object';
-import { map } from 'lodash/collection';
 
 import * as types from 'constants/actionTypes/PostsActionTypes';
 
@@ -9,7 +8,8 @@ const initialState = {
   entries: [],
   maxPosts: 0,
   step: 2,
-  page: 1
+  page: 1,
+  query: null
 };
 
 export default function(state = initialState, action) {
@@ -20,27 +20,14 @@ export default function(state = initialState, action) {
       return assign({}, state, { error: true });
     case types.FETCH_POSTS_SUCCESS:
       return assign({}, state, {
-        entries: action.response,
-        maxPosts: action.maxPosts,
-        page: action.page,
+        entries: action.response.body,
+        maxPosts: parseInt(action.response.headers['max-posts']),
+        page: action.response.query.page,
+        step: action.response.query.step,
+        query: action.response.query.query,
         isFetching: false
-      });
-    case types.SET_PAGE:
-      return assign({}, state, { page: action.page });
-    case types.ADD_LIKE:
-      return assign({}, state, {
-        entries: incrementLikes(state.entries, action.itemId)
       });
     default:
       return state;
   }
 }
-
-const incrementLikes = (posts, postId) => (
-  map(
-    posts,
-    (post) => (
-      (post.id === postId) ?
-        { ...post, meta: { ...post.meta, likes: post.meta.likes + 1 }} : post)
-  )
-);

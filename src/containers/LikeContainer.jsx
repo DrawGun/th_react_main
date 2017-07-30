@@ -7,9 +7,9 @@ import { addLike } from 'actions/Like';
 
 const stateToProps = (state, ownProps) => ({
   amount: get(
-    find(state.posts.entries, { id: ownProps.itemId }),
-    'meta.likes',
-    get(state, 'post.entry.meta.likes', 0)
+    find(state.like.entries, { id: ownProps.itemId }),
+    'likes',
+    0
   )
 });
 

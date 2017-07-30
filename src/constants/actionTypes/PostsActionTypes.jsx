@@ -1,5 +1,3 @@
 export const FETCH_POSTS_REQUEST = 'FETCH_POSTS_REQUEST';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_POSTS_ERROR = 'FETCH_POSTS_ERROR';
-export const SET_PAGE = 'SET_PAGE';
-export const ADD_LIKE = 'ADD_LIKE';

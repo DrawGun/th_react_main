@@ -11,11 +11,14 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_POST_REQUEST:
-      return assign({}, initialState, { isFetching: true });
+      return assign({}, state, { isFetching: true });
     case types.FETCH_POST_ERROR:
-      return assign({}, initialState, { error: true });
+      return assign({}, state, { error: true });
     case types.FETCH_POST_SUCCESS:
-      return assign({}, initialState, { entry: action.response });
+      return assign({}, state, {
+        entry: action.response.body,
+        isFetching: false
+      });
     default:
       return state;
   }

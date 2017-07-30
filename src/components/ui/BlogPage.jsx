@@ -12,15 +12,17 @@ import Search from 'components/elements/Search';
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-    this.setPage = this.props.setPage.bind(this);
+
+    this.setPage = this.setPage.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
   render() {
-    const { isFetching } = this.props;
+    const { isFetching, query } = this.props;
 
     return (
-      <div>
+      <div className="blog-page posts">
+        <Search handleSearch={ this.handleSearch } query={ query || '' } />
         { isFetching ? <Spinner /> : this.renderPosts() }
       </div>
     );
@@ -30,8 +32,7 @@ class BlogPage extends React.Component {
     const { items, maxPosts, step, page } = this.props;
 
     return (
-      <div className="blog-page posts">
-        <Search handleSearch={ this.handleSearch } />
+      <div>
         <Row className="show-grid">
           <Col md={6}>
             <BlogList posts={items} />
@@ -54,8 +55,14 @@ class BlogPage extends React.Component {
     );
   }
 
-  handleSearch() {
-    return console.log('handleSearch()');
+  setPage(page) {
+    const { step, fetchPosts } = this.props;
+    fetchPosts(page, step);
+  }
+
+  handleSearch(query) {
+    const { page, step, fetchPosts } = this.props;
+    fetchPosts(page, step, query);
   }
 }
 
@@ -65,7 +72,8 @@ BlogPage.propTypes = {
   step: PropTypes.number,
   page: PropTypes.number,
   isFetching: PropTypes.bool,
-  setPage: PropTypes.func
+  fetchPosts: PropTypes.func,
+  query: PropTypes.string
 };
 
 BlogPage.defaultProps = {
