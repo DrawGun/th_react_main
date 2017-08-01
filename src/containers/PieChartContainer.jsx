@@ -1,13 +1,19 @@
 import { connect } from 'react-redux';
-import { map } from 'lodash/collection';
+import { map, find } from 'lodash/collection';
 
 import PieChart from 'components/widgets/blog/PieChart';
 
-const stateToProps = (state) => ({
-  columns: map(
-    state.posts.entries,
-    (post) => ([post.title, post.meta.likes])
-  )
-});
+const stateToProps = (state) => {
+  const likes = state.like.entries;
+
+  return {
+    columns: map(
+      state.posts.entries,
+      (post) => (
+        [post.title, find(likes, (like) => (like.id == post.id)).likes]
+      )
+    )
+  };
+};
 
 export default connect(stateToProps)(PieChart);
