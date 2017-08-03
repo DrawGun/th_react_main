@@ -26,6 +26,6 @@ export default (location) => {
 
     return match;
   });
-  
+
   return __CLIENT__ ? prepareData(store, routeState) : routeState; // eslint-disable-line
 };
