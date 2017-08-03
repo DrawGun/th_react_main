@@ -8,7 +8,7 @@ const Post = {
   path: postsPath(),
   component: PostContainer,
   prepareData: (store, query, params) => {
-    store.dispatch(fetchPost(params.id));
+    return store.dispatch(fetchPost(params.id));
   }
 };
 
