@@ -1,40 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Router, matchPath, Switch } from 'react-router-dom';
+import { Router, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { parse } from 'qs';
-import { assign } from 'lodash/object';
 
-import store from 'store';
+import createStore from 'store';
 import createRoutes from 'routes';
 
-import prepareData from 'helpers/prepareData';
-import history from 'routes/history';
+import history from 'helpers/routes/history';
+import historyCb from 'helpers/routes/historyCb';
 import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
 
 import MainLayout from 'components/layouts/MainLayout';
 
 import DevTools from 'containers/DevTools';
 
+const store = createStore(window.__INITIAL_STATE__);
 const routes = createRoutes();
-function historyCb(location) {
-  const routeState = { location, params: {}, routes: [], query: {}};
-
-  routes.some(route => {
-    const match = matchPath(location.pathname, route);
-
-    if (match) {
-      routeState.routes.push(route);
-      assign(routeState.params, match.params);
-      assign(routeState.query, parse(location.search.substr(1)));
-    }
-
-    return match;
-  });
-
-  prepareData(store, routeState);
-}
 
 class App extends React.Component {
   componentWillMount() {
@@ -61,7 +43,10 @@ class App extends React.Component {
 
 ReactDOM.render(
   <DevTools store={store} />,
-  document.getElementById('devtools')
+  document.getElementById('devtools'),
+  () => {
+    delete window.__INITIAL_STATE__;
+  }
 );
 
 export default App;
