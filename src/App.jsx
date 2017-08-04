@@ -18,14 +18,13 @@ import DevTools from 'containers/DevTools';
 const store = createStore(window.__INITIAL_STATE__);
 const routes = createRoutes();
 
-class App extends React.Component {
-  componentWillMount() {
-    history.listen((location) => {
-      historyCb(location);
-    });
-    // historyCb(window.location);
-  }
+history.listen((location) => {
+  historyCb(location);
+});
 
+historyCb(window.location);
+
+class App extends React.Component {
   render() {
     return (
       <Provider store={store}>

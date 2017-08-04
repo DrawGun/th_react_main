@@ -14,6 +14,7 @@ function APICall({ endpoint, method, query, payload }) {
     if (payload)
       r = r.send(payload);
 
+    console.log('APICall', r)
     r.end((error, response) => (
       error ? reject(error) : resolve({
         body: response.body,
@@ -34,7 +35,7 @@ export default _ignoredStore => next => action => {
   if (!action[API_CALL]) return next(action);
 
   const [requestType, successType, failureType] = action[API_CALL].types;
-
+  console.log("next(nextAction(action, { type: requestType }));");
   next(nextAction(action, { type: requestType }));
 
   const promise = APICall(
