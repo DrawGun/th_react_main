@@ -6,6 +6,7 @@ import BlogItem from 'components/widgets/blog/Item';
 class Post extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props, 'props');
   }
 
   render() {

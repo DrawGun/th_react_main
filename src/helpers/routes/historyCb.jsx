@@ -26,6 +26,10 @@ export default (location) => {
 
     return match;
   });
-
-  return __CLIENT__ ? prepareData(store, routeState) : routeState; // eslint-disable-line
+  console.log(__CLIENT__, routeState); // eslint-disable-line
+  if (__CLIENT__) { // eslint-disable-line
+    prepareData(store, routeState);
+  } else {
+    return routeState;
+  }
 };

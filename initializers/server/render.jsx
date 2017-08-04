@@ -31,7 +31,7 @@ export default (req, res) => {
 
     const content = ReactDOMServer.renderToString(
       <Provider store={store}>
-        <StaticRouter location={location} context = {context} >
+        <StaticRouter location={req.url} context = {context} >
           <MainLayout>
             <Switch>
               {routes.map((route, i) => (

@@ -20,8 +20,10 @@ const routes = createRoutes();
 
 class App extends React.Component {
   componentWillMount() {
-    history.listen(historyCb);
-    historyCb(window.location);
+    history.listen((location) => {
+      historyCb(location);
+    });
+    // historyCb(window.location);
   }
 
   render() {
