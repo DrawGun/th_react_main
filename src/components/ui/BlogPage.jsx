@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Helmet from 'react-helmet';
+
 import { Row, Col } from 'react-bootstrap';
 
 import PieChartContainer from 'containers/PieChartContainer';
@@ -24,6 +26,9 @@ class BlogPage extends React.Component {
       <div className="blog-page posts">
         <Search handleSearch={ this.handleSearch } query={ query || '' } />
         { isFetching ? <Spinner /> : this.renderPosts() }
+        <Helmet title='Список постов'>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
       </div>
     );
   }

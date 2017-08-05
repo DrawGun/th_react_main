@@ -2,22 +2,44 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 
-import url from 'url';
+import Helmet from 'react-helmet';
 
-import { Switch, StaticRouter } from 'react-router-dom';
+import url from 'url';
+import { parse } from 'qs';
+
+import { Switch, StaticRouter, matchPath } from 'react-router-dom';
 
 import { compact } from 'lodash/array';
+import { assign } from 'lodash/object';
 
 import createStore from 'store';
+const store = createStore();
+
 import createRoutes from 'routes';
+const routes = createRoutes();
 
 import prepareData from 'helpers/prepareData';
-import historyCb from 'helpers/routes/historyCb';
 import RouteWithSubRoutes from 'helpers/routes/RouteWithSubRoutes';
 import MainLayout from 'components/layouts/MainLayout';
 
-const store = createStore();
-const routes = createRoutes();
+function historyCb(location) {
+  const routeState = { location, params: {}, routes: [], query: {}};
+
+  routes.some(route => {
+    const match = matchPath(location.pathname, route);
+
+    if (match) {
+      routeState.routes.push(route);
+      assign(routeState.params, match.params);
+      const query = location.search ? parse(location.search.substr(1)) : {};
+      assign(routeState.query, query);
+    }
+
+    return match;
+  });
+
+  return routeState;
+}
 
 export default (req, res) => {
   const location = url.parse(req.url);
@@ -43,10 +65,12 @@ export default (req, res) => {
       </Provider>
     );
 
+    const head = Helmet.rewind();
+
     res.status(200);
     res.render(
       'index',
-      { initialState, content }
+      { initialState, content, head }
     );
   });
 };
