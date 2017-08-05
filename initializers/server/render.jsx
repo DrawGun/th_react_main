@@ -44,33 +44,43 @@ function historyCb(location) {
 export default (req, res) => {
   const location = url.parse(req.url);
   const routeState = historyCb(location);
+  console.log(routeState, 'routeState');
 
-  Promise.all(
-    compact(prepareData(store, routeState))
-  ).then(() => {
-    const context = {};
-    const initialState = JSON.stringify(store.getState());
+  if (routeState.routes.length == 0) {
+    res.status(404);
+    res.render('not_found');
+  } else {
+    Promise.all(
+      compact(prepareData(store, routeState))
+    ).then(() => {
+      const context = {};
+      const initialState = JSON.stringify(store.getState());
 
-    const content = ReactDOMServer.renderToString(
-      <Provider store={store}>
-        <StaticRouter location={req.url} context = {context} >
-          <MainLayout>
-            <Switch>
-              {routes.map((route, i) => (
-                <RouteWithSubRoutes key={i} {...route}/>
-              ))}
-            </Switch>
-          </MainLayout>
-        </StaticRouter>
-      </Provider>
-    );
+      const content = ReactDOMServer.renderToString(
+        <Provider store={store}>
+          <StaticRouter location={req.url} context = {context} >
+            <MainLayout>
+              <Switch>
+                {routes.map((route, i) => (
+                  <RouteWithSubRoutes key={i} {...route}/>
+                ))}
+              </Switch>
+            </MainLayout>
+          </StaticRouter>
+        </Provider>
+      );
 
-    const head = Helmet.rewind();
+      const head = Helmet.rewind();
 
-    res.status(200);
-    res.render(
-      'index',
-      { initialState, content, head }
-    );
-  });
+      res.status(200);
+      res.render(
+        'index',
+        { initialState, content, head }
+      );
+    },
+    () => {
+      res.status(500);
+      res.render('server_error');
+    });
+  }
 };
