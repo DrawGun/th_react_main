@@ -34,7 +34,6 @@ export default _ignoredStore => next => action => {
   if (!action[API_CALL]) return next(action);
 
   const [requestType, successType, failureType] = action[API_CALL].types;
-
   next(nextAction(action, { type: requestType }));
 
   const promise = APICall(

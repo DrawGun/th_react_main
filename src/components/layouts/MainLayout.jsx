@@ -6,7 +6,7 @@ import { PageHeader, Button, Well } from 'react-bootstrap';
 import Container from './Container';
 import Link from 'components/elements/Link';
 
-import history from 'routes/history';
+import history from 'helpers/routes/history';
 
 const MainLayout = ({ children }) => (
   <Container>

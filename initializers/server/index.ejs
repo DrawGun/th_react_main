@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%- head.title.toString() %>
+    <%- head.meta.toString() %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="app"><%- content %></div>
+    <div id="devtools"></div>
+    <script type="text/javascript">window.__INITIAL_STATE__ = <%- initialState %></script>
+    <script type="text/javascript" src="/assets/bundle.js"></script>
+  </body>
+</html>

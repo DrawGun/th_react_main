@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Helmet from 'react-helmet';
+
 import BlogItem from 'components/widgets/blog/Item';
 
 class Post extends React.Component {
@@ -26,6 +28,10 @@ class Post extends React.Component {
           meta={post.meta}
           url={post.url}
           incrementLikes={this._incrementLikes} />
+
+        <Helmet title={post.title}>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
       </div>
     );
   }

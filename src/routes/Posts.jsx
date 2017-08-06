@@ -1,5 +1,6 @@
 import PostsContainer from 'containers/PostsContainer';
 
+import initialLoad from 'helpers/initialLoad';
 import { fetchPosts } from 'actions/Posts';
 
 const Posts = {
@@ -7,8 +8,10 @@ const Posts = {
   path: '/',
   component: PostsContainer,
   prepareData: (store) => {
+    if (initialLoad()) return;
+    
     const { page, step } = store.getState().posts;
-    store.dispatch(fetchPosts(page, step));
+    return store.dispatch(fetchPosts(page, step));
   }
 };
 
