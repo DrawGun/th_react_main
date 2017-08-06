@@ -1,5 +1,4 @@
 const morgan = require('morgan');
-morgan('tiny');
 
 const path = require('path');
 require('app-module-path').addPath(path.join(process.cwd(), 'src'));
@@ -16,6 +15,7 @@ const port = 3000;
 const express = require('express');
 const application = express();
 
+application.use(morgan('combined'));
 application.use(express.static('dist'));
 
 application.set('views', __dirname);
