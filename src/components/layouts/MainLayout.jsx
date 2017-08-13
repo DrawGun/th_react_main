@@ -33,6 +33,7 @@ const Logo = () => (
   <PageHeader>
     <Link className="header-link" to='/'>Thinknetica Blog</Link>
     <Link className="header-link" to='/about'>About</Link>
+    <Link className="header-link" to='/contacts'>Contacts</Link>
 
     <GoBackButton />
   </PageHeader>

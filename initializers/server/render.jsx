@@ -44,7 +44,6 @@ function historyCb(location) {
 export default (req, res) => {
   const location = url.parse(req.url);
   const routeState = historyCb(location);
-  console.log(routeState, 'routeState');
 
   if (routeState.routes.length == 0) {
     res.status(404);
