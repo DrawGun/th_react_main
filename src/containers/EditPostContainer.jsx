@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Post from 'components/ui/Post';
+import EditPost from 'components/ui/EditPost';
 import { postsPath, editPostsPath } from 'helpers/routes/posts';
 
 const stateToProps = (state) => { // eslint-disable-line
@@ -9,7 +9,7 @@ const stateToProps = (state) => { // eslint-disable-line
       {
         ...state.post.entry,
         url: postsPath(state.post.entry.id),
-        editUrl: editPostsPath(state.post.entry.id) 
+        editUrl: editPostsPath(state.post.entry.id)
       }
       : {},
     isFetching: state.post.isFetching,
@@ -17,4 +17,4 @@ const stateToProps = (state) => { // eslint-disable-line
   };
 };
 
-export default connect(stateToProps)(Post);
+export default connect(stateToProps)(EditPost);

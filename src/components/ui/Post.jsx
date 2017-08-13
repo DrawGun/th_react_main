@@ -12,6 +12,7 @@ class Post extends React.Component {
 
   render() {
     const { item, isFetching } = this.props;
+
     return (
       !isFetching && item && this.renderPost(item)
     );
@@ -27,6 +28,7 @@ class Post extends React.Component {
           image={post.image}
           meta={post.meta}
           url={post.url}
+          editUrl={post.editUrl}
           incrementLikes={this._incrementLikes} />
 
         <Helmet title={post.title}>

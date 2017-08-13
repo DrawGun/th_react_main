@@ -14,13 +14,16 @@ class List extends React.Component {
     const posts = map(
       this.props.posts,
       (post) => (
-        <BlogItem
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          image={post.image}
-          meta={post.meta}
-          url={post.url} />
+        <div className="blog-page post">
+          <BlogItem
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            image={post.image}
+            meta={post.meta}
+            editUrl={post.editUrl}
+            url={post.url} />
+        </div>
       )
     );
 

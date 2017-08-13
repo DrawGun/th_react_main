@@ -3,13 +3,17 @@ import { map } from 'lodash/collection';
 
 import BlogPage from 'components/ui/BlogPage';
 import { fetchPosts } from 'actions/Posts';
-import { postsPath } from 'helpers/routes/posts';
+import { postsPath, editPostsPath } from 'helpers/routes/posts';
 
 const stateToProps = (state) => ({
   items: map(
     state.posts.entries,
     (post) => (
-      { ...post, url: postsPath(post.id) }
+      {
+        ...post,
+        url: postsPath(post.id),
+        editUrl: editPostsPath(post.id)
+      }
     )
   ),
   isFetching: state.posts.isFetching,
