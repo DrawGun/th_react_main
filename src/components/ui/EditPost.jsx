@@ -1,35 +1,124 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Field } from 'redux-form';
 
-class Post extends React.Component {
+import { Button } from 'react-bootstrap';
+
+import FieldGroup from 'components/elements/FieldGroup';
+
+class renderField extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { item, isFetching } = this.props;
+    const {
+      input, label, name, type, meta: { touched, error, warning } // eslint-disable-line
+    } = this.props;
+
+    let fieldState;
+    if (error) {
+      fieldState = 'error';
+    }
+
+    if (warning) {
+      fieldState = 'warning';
+    }
 
     return (
-      !isFetching && item && this.renderEditPostForm(item)
+      <FieldGroup
+        id={`formControlsFull${name}`}
+        name={name}
+        type={type}
+        label={label}
+        placeholder={`Enter ${name}`}
+        validationState={fieldState}
+        help={error || warning}
+        {...input}
+      />
     );
   }
+}
 
-  renderEditPostForm(post) {
+renderField.propTypes = {
+  input: PropTypes.object,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  type: PropTypes.string,
+  meta: PropTypes.object
+};
+
+class EditPost extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.props.handleSubmit.bind(this);
+  }
+
+  render() {
     return (
       <div className="blog-page edit-post">
-        TEST
+        <h1>Edit Post</h1>
+
+        <form onSubmit={ this.handleSubmit }>
+          <Field
+            label="Title"
+            component={renderField}
+            type="text"
+            name="title" />
+
+          <Field
+            label="CreatedAt"
+            component={renderField}
+            type="text"
+            name="createdAt" />
+
+          <Field
+            label="Author"
+            component={renderField}
+            type="text"
+            name="author" />
+
+          <Button type="submit">
+            Submit
+          </Button>
+        </form>
       </div>
     );
   }
 }
 
-Post.propTypes = {
+EditPost.propTypes = {
   item: PropTypes.object,
-  isFetching: PropTypes.bool
+  handleSubmit: PropTypes.func
 };
 
-Post.defaultProps = {
+EditPost.defaultProps = {
   item: {}
 };
 
-export default Post;
+export default EditPost;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// s
