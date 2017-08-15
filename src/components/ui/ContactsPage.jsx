@@ -46,7 +46,7 @@ class Contacts extends React.Component {
 
   render() {
     const { fullName, email, message } = this.state.form.values;
-    console.log(this.state);
+
     return (
       <Row className="show-grid about">
         <Col md={12}>

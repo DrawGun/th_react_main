@@ -19,7 +19,7 @@ class BlogItem extends React.Component {
     const { id, title, image, meta, url, editUrl } = this.props;
     const { src, alt, width, height } = image;
     const { author, createdAt, updatedAt } = meta;
-    console.log(this.props);
+
     return (
       <Panel header={<Title text={title} url={url} />}>
         <Media>
@@ -38,9 +38,11 @@ class BlogItem extends React.Component {
 
             { id && <LikeContainer itemId={id} itemType='Post' /> }
 
-            <div className="edit-post-link">
-              <Link className="link" to={editUrl}>Edit</Link>
-            </div>
+            <Link
+              wrapperClassNames='edit-post-link'
+              linkClassNamse='link'
+              to={editUrl}
+              children='Edit' />
           </Media.Body>
         </Media>
       </Panel>

@@ -3,10 +3,14 @@ body {
 }
 
 .page-header {
-  .header-link {
-    margin-right: 20px;
-    border-right: 1px solid #337ab7;
-    padding-right: 20px;
+  .header-link-wrapper {
+    display: inline-block;
+    
+    .header-link {
+      margin-right: 20px;
+      border-right: 1px solid #337ab7;
+      padding-right: 20px;
+    }
   }
 }
 

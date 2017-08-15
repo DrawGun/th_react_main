@@ -14,9 +14,8 @@ class List extends React.Component {
     const posts = map(
       this.props.posts,
       (post) => (
-        <div className="blog-page post">
+        <div className="blog-page post" key={`post-${post.id}`}>
           <BlogItem
-            key={post.id}
             id={post.id}
             title={post.title}
             image={post.image}

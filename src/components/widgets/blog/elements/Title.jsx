@@ -5,7 +5,7 @@ import TextBox from './TextBox';
 import Link from 'components/elements/Link';
 
 const Title = ({ text, url }) => (
-  <Link to={ url }>
+  <Link wrapperClassNames='wrapper-link' linkClassNamse='link' to={url}>
     <TextBox>
       { text }
     </TextBox>

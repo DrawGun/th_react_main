@@ -16,10 +16,6 @@ const stateToProps = (state) => { // eslint-disable-line
   };
 };
 
-const actionsToProps = (dispatch, ownProps) => ({
-  updatePost: (values) => dispatch(updatePost(ownProps.match.params.id, values))
-});
-
 const validate = (values) => {
   const errors = {};
 
@@ -38,11 +34,13 @@ const warn = (values) => {
   return warnings;
 };
 
-export default connect(stateToProps, actionsToProps)(
+export default connect(stateToProps)(
   reduxForm({
     form: 'editPost',
     validate,
     warn,
-    onSubmit: updatePost
+    onSubmit: (values, dispatch, props) => (
+      dispatch(updatePost(props.match.params.id, values))
+    )
   })(EditPost)
 );
