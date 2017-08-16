@@ -15,6 +15,7 @@ export default function(state = initialState, action) {
     case types.FETCH_POST_ERROR:
       return assign({}, state, { error: true });
     case types.FETCH_POST_SUCCESS:
+      console.log(action.response.body);
       return assign({}, state, {
         entry: action.response.body,
         isFetching: false
