@@ -6,6 +6,13 @@
   }
 
   &.post {
-
+    .panel-body {
+      .media-body {
+        .edit-post-link {
+          margin-top: 20px;
+          text-align: right;
+        }
+      }
+    }
   }
 }

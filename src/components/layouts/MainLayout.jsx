@@ -31,8 +31,29 @@ const GoBackButton = () => (
 
 const Logo = () => (
   <PageHeader>
-    <Link className="header-link" to='/'>Thinknetica Blog</Link>
-    <Link className="header-link" to='/about'>About</Link>
+    <Link
+      wrapperClassNames='header-link-wrapper'
+      linkClassNames='header-link'
+      to='/'>
+
+      Thinknetica Blog
+    </Link>
+
+    <Link
+      wrapperClassNames='header-link-wrapper'
+      linkClassNames='header-link'
+      to='/about'>
+
+      About
+    </Link>
+
+    <Link
+      wrapperClassNames='header-link-wrapper'
+      linkClassNames='header-link'
+      to='/contacts'>
+
+      Contacts
+    </Link>
 
     <GoBackButton />
   </PageHeader>

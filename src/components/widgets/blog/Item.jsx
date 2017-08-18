@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Panel, Media } from 'react-bootstrap';
 
+import Link from 'components/elements/Link';
+
 import Image from './elements/Image';
 import MetaData from './elements/MetaData';
 import Title from './elements/Title';
@@ -14,7 +16,7 @@ class BlogItem extends React.Component {
   }
 
   render() {
-    const { id, title, image, meta, url } = this.props;
+    const { id, title, image, meta, url, editUrl } = this.props;
     const { src, alt, width, height } = image;
     const { author, createdAt, updatedAt } = meta;
 
@@ -35,6 +37,12 @@ class BlogItem extends React.Component {
               updatedAt={updatedAt} />
 
             { id && <LikeContainer itemId={id} itemType='Post' /> }
+
+            <Link
+              wrapperClassNames='edit-post-link'
+              linkClassNamse='link'
+              to={editUrl}
+              children='Edit' />
           </Media.Body>
         </Media>
       </Panel>
@@ -47,7 +55,8 @@ BlogItem.propTypes = {
   title: PropTypes.string,
   url: PropTypes.string,
   image: PropTypes.shape(Image.propTypes),
-  meta: PropTypes.object
+  meta: PropTypes.object,
+  editUrl: PropTypes.string
 };
 
 BlogItem.defaultProps = {

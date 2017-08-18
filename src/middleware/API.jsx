@@ -14,13 +14,16 @@ function APICall({ endpoint, method, query, payload }) {
     if (payload)
       r = r.send(payload);
 
-    r.end((error, response) => (
-      error ? reject(error) : resolve({
+    r.end((error, response) => {
+      error ? reject({
+        body: response.body,
+        headers: response.headers,
+      }) : resolve({
         body: response.body,
         headers: response.headers,
         query
-      })
-    ));
+      });
+    });
   });
 }
 
