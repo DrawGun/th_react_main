@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogItem BlogItem should render usual item 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Panel
+    bsClass="panel"
+    bsStyle="default"
+    defaultExpanded={false}
+    header={
+        <Title
+            text="Some text"
+            url="Some url"
+        />
+    }
+>
+    <Media
+        bsClass="media"
+        componentClass="div"
+    >
+        <MediaLeft
+            align="top"
+            bsClass="media-left"
+        >
+            <Image
+                alt="Alt"
+                height="100px"
+                src="https://facebook.github.io/react/img/logo.svg"
+                width="100px"
+            />
+        </MediaLeft>
+        <MediaBody
+            bsClass="media-body"
+            componentClass="div"
+        >
+            <MetaData
+                author="Author"
+                createdAt="20.08.2017"
+                updatedAt="20.08.2017"
+            />
+            <Connect(Likes)
+                itemId={1}
+                itemType="Post"
+            />
+            <Link
+                linkClassNamse="link"
+                to="Some editUrl"
+                wrapperClassNames="edit-post-link"
+            >
+                Edit
+            </Link>
+        </MediaBody>
+    </Media>
+</Panel>,
+  "nodes": Array [
+    <Panel
+      bsClass="panel"
+      bsStyle="default"
+      defaultExpanded={false}
+      header={
+            <Title
+                  text="Some text"
+                  url="Some url"
+            />
+      }
+>
+      <Media
+            bsClass="media"
+            componentClass="div"
+      >
+            <MediaLeft
+                  align="top"
+                  bsClass="media-left"
+            >
+                  <Image
+                        alt="Alt"
+                        height="100px"
+                        src="https://facebook.github.io/react/img/logo.svg"
+                        width="100px"
+                  />
+            </MediaLeft>
+            <MediaBody
+                  bsClass="media-body"
+                  componentClass="div"
+            >
+                  <MetaData
+                        author="Author"
+                        createdAt="20.08.2017"
+                        updatedAt="20.08.2017"
+                  />
+                  <Connect(Likes)
+                        itemId={1}
+                        itemType="Post"
+                  />
+                  <Link
+                        linkClassNamse="link"
+                        to="Some editUrl"
+                        wrapperClassNames="edit-post-link"
+                  >
+                        Edit
+                  </Link>
+            </MediaBody>
+      </Media>
+</Panel>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <BlogItem
+        editUrl="Some editUrl"
+        id={1}
+        image={Object {}}
+        meta={Object {}}
+        post={
+                Object {
+                        "id": 5,
+                        "image": Object {
+                          "alt": "Hello, World",
+                          "src": "/images/World.jpg",
+                        },
+                        "title": "Hello, World!",
+                      }
+        }
+        title="Some text"
+        url="Some url"
+/>,
+      "_debugID": 47,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": BlogItem {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "editUrl": "Some editUrl",
+          "id": 1,
+          "image": Object {},
+          "meta": Object {},
+          "post": Object {
+            "id": 5,
+            "image": Object {
+              "alt": "Hello, World",
+              "src": "/images/World.jpg",
+            },
+            "title": "Hello, World!",
+          },
+          "title": "Some text",
+          "url": "Some url",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Panel
+          bsClass="panel"
+          bsStyle="default"
+          defaultExpanded={false}
+          header={
+                    <Title
+                              text="Some text"
+                              url="Some url"
+                    />
+          }
+>
+          <Media
+                    bsClass="media"
+                    componentClass="div"
+          >
+                    <MediaLeft
+                              align="top"
+                              bsClass="media-left"
+                    >
+                              <Image
+                                        alt="Alt"
+                                        height="100px"
+                                        src="https://facebook.github.io/react/img/logo.svg"
+                                        width="100px"
+                              />
+                    </MediaLeft>
+                    <MediaBody
+                              bsClass="media-body"
+                              componentClass="div"
+                    >
+                              <MetaData
+                                        author="Author"
+                                        createdAt="20.08.2017"
+                                        updatedAt="20.08.2017"
+                              />
+                              <Connect(Likes)
+                                        itemId={1}
+                                        itemType="Post"
+                              />
+                              <Link
+                                        linkClassNamse="link"
+                                        to="Some editUrl"
+                                        wrapperClassNames="edit-post-link"
+                              >
+                                        Edit
+                              </Link>
+                    </MediaBody>
+          </Media>
+</Panel>,
+        "_debugID": 48,
+        "_renderedOutput": <Panel
+          bsClass="panel"
+          bsStyle="default"
+          defaultExpanded={false}
+          header={
+                    <Title
+                              text="Some text"
+                              url="Some url"
+                    />
+          }
+>
+          <Media
+                    bsClass="media"
+                    componentClass="div"
+          >
+                    <MediaLeft
+                              align="top"
+                              bsClass="media-left"
+                    >
+                              <Image
+                                        alt="Alt"
+                                        height="100px"
+                                        src="https://facebook.github.io/react/img/logo.svg"
+                                        width="100px"
+                              />
+                    </MediaLeft>
+                    <MediaBody
+                              bsClass="media-body"
+                              componentClass="div"
+                    >
+                              <MetaData
+                                        author="Author"
+                                        createdAt="20.08.2017"
+                                        updatedAt="20.08.2017"
+                              />
+                              <Connect(Likes)
+                                        itemId={1}
+                                        itemType="Post"
+                              />
+                              <Link
+                                        linkClassNamse="link"
+                                        to="Some editUrl"
+                                        wrapperClassNames="edit-post-link"
+                              >
+                                        Edit
+                              </Link>
+                    </MediaBody>
+          </Media>
+</Panel>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <BlogItem
+    editUrl="Some editUrl"
+    id={1}
+    image={Object {}}
+    meta={Object {}}
+    post={
+        Object {
+            "id": 5,
+            "image": Object {
+              "alt": "Hello, World",
+              "src": "/images/World.jpg",
+            },
+            "title": "Hello, World!",
+          }
+    }
+    title="Some text"
+    url="Some url"
+/>,
+}
+`;

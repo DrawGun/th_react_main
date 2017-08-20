@@ -60,9 +60,12 @@ BlogItem.propTypes = {
 };
 
 BlogItem.defaultProps = {
-  title: 'Some title',
+  id: 1,
+  title: 'Some text',
+  url: 'Some url',
   image: {},
-  meta: {}
+  meta: {},
+  editUrl: 'Some editUrl'
 };
 
 export default BlogItem;

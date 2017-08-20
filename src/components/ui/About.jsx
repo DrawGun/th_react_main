@@ -12,7 +12,7 @@ class About extends React.Component {
     return (
       <Row className="show-grid about">
         <Col md={12}>
-          Добавил страницу About, как просили в доп задании к 5 уроку.
+          Добавил страницу About page, как просили в доп задании к 5 уроку.
         </Col>
       </Row>
     );
