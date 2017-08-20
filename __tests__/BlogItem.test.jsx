@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
 
 import BlogItem from '../src/components/widgets/blog/Item';
 import Image from '../src/components/widgets/blog/elements/Image';
-
-import history from 'helpers/routes/history';
 
 import { fakeStore } from 'helpers/fakeStore';
 import { fakeState } from 'constants/fakeState';
@@ -20,9 +17,7 @@ describe('BlogItem', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <Provider store={fakeStore(state)}>
-        <Router history={history}>
-          <BlogItem />
-        </Router>
+        <BlogItem />
       </Provider>, div);
   });
 

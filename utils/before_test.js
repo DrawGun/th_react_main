@@ -3,6 +3,7 @@ const path = require('path');
 require('app-module-path').addPath(path.join(process.cwd(), 'src'));
 
 global.__CLIENT__ = true;
+global.__TEST__ = true;
 
 switch (process.env.TARGET) {
   case 'staging':
