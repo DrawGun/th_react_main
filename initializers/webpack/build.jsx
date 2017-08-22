@@ -3,7 +3,7 @@ require('babel-core/register');
 const fs = require('fs.extra');
 const webpack = require('webpack');
 
-const config = require('./production.js').default;
+const config = require('./production.jsx').default;
 
 webpack(config, function(_error, stats) {
   const manifest = stats.toJson().assetsByChunkName;

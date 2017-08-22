@@ -7,7 +7,7 @@ export default {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    path.resolve(__dirname, 'src/index.jsx')
+    path.resolve(__dirname, '../../src/index.jsx')
   ],
 
   output: {

@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 
 import Helmet from 'react-helmet';
 
+import webpackAsset from './webpackAsset';
+
 import url from 'url';
 import { parse } from 'qs';
 
@@ -74,7 +76,7 @@ export default (req, res) => {
       res.status(200);
       res.render(
         'index',
-        { initialState, content, head }
+        { initialState, content, head, webpackAsset }
       );
     },
     () => {
