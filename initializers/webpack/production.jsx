@@ -47,6 +47,7 @@ export default {
     ]
   },
   resolve: {
+    extensions: ['*', '.js', '.jsx'],
     modules: [
       path.join(process.cwd(), 'src'),
       'node_modules'
