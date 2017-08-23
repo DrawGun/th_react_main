@@ -11,6 +11,9 @@ plan.target('production', {
 });
 
 plan.local(function(local) {
+  local.log('Run Tests');
+  local.exec('npm run test');
+  
   local.log('Copy files to remote host');
   var filesToCopy = local.exec('git ls-files', {silent: true});
   local.transfer(filesToCopy, '/tmp/' + tmpDir);
