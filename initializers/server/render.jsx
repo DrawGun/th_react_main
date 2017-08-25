@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 import webpackAsset from './webpackAsset';
 
