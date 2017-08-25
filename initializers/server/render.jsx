@@ -71,7 +71,7 @@ export default (req, res) => {
         </Provider>
       );
 
-      const head = Helmet.rewind();
+      const head = Helmet.renderStatic();
 
       res.status(200);
       res.render(

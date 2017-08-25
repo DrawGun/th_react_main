@@ -3,6 +3,7 @@ import * as types from 'constants/actionTypes/PostActionTypes';
 import { API_CALL } from 'middleware/API';
 
 export function fetchPost(id) {
+  console.log(id);
   return {
     [API_CALL]: {
       endpoint: `/posts/${id}`,

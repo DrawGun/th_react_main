@@ -68,10 +68,7 @@ class App extends React.Component {
 if (__DEVELOPMENT__) // eslint-disable-line
   ReactDOM.render(
     <DevTools store={store} />,
-    document.getElementById('devtools'),
-    () => {
-      delete window.__INITIAL_STATE__;
-    }
+    document.getElementById('devtools')
   );
 
 export default App;

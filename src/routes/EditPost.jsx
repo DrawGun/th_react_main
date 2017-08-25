@@ -9,6 +9,7 @@ const EditPost = {
   component: EditPostContainer,
   prepareData: (store, query, params) => {
     if (initialLoad()) return;
+    console.log(params.id);
     return store.dispatch(fetchPost(params.id));
   }
 };
