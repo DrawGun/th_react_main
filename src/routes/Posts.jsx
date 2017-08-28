@@ -9,7 +9,7 @@ const Posts = {
   component: PostsContainer,
   prepareData: (store) => {
     if (initialLoad()) return;
-    
+
     const { page, step } = store.getState().posts;
     return store.dispatch(fetchPosts(page, step));
   }

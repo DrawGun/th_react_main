@@ -7,13 +7,13 @@ export default {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    path.resolve(__dirname, 'src/index.jsx')
+    path.resolve(__dirname, '../../src/index.jsx')
   ],
 
   output: {
-    path: path.join(process.cwd(), "dist"),
-    publicPath: "/assets/",
-    filename: "bundle.js"
+    path: path.join(process.cwd(), 'dist'),
+    publicPath: '/assets/',
+    filename: 'bundle.js'
   },
 
   module: {
@@ -21,26 +21,26 @@ export default {
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
         loaders: [
-          "style-loader",
-          "css-loader?importLoaders=1"
+          'style-loader',
+          'css-loader?importLoaders=1'
         ]
       },
       {
         test: /\.scss$/,
         loaders: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
+          'style-loader',
+          'css-loader',
+          'sass-loader'
         ]
       },
       {
         test: /\.(eot|png|ttf|svg|woff|woff2)$/,
-        loader: "url-loader"
+        loader: 'url-loader'
       }
     ]
   },
@@ -48,8 +48,8 @@ export default {
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     modules: [
-      path.join(process.cwd(), "src"),
-      "node_modules"
+      path.join(process.cwd(), 'src'),
+      'node_modules'
     ]
   },
 

@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
+
+import webpackAsset from './webpackAsset';
 
 import url from 'url';
 import { parse } from 'qs';
@@ -69,12 +71,12 @@ export default (req, res) => {
         </Provider>
       );
 
-      const head = Helmet.rewind();
+      const head = Helmet.renderStatic();
 
       res.status(200);
       res.render(
         'index',
-        { initialState, content, head }
+        { initialState, content, head, webpackAsset }
       );
     },
     () => {
